@@ -5,6 +5,7 @@ import { Hero } from "@/components/hero";
 import { FactTicker } from "@/components/fact-ticker";
 import { SectionEyebrow } from "@/components/section-eyebrow";
 import { DatesTimeline } from "@/components/dates-timeline";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -47,26 +48,26 @@ export default function Home() {
       <FactTicker />
 
       <section className="border-b border-border">
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4 my-12 mx-6 lg:mx-auto">
+        <RevealGroup className="mx-auto grid max-w-5xl grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4 my-12 mx-6 lg:mx-auto">
           {facts.map((fact) => (
-            <div
+            <RevealItem
               key={fact.title}
               className="group relative bg-card px-6 py-7 transition-colors hover:bg-accent/40"
             >
-              <span className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-brand-accent transition-transform duration-300 group-hover:scale-x-100" />
-              <div className="inline-flex rounded-lg bg-primary/10 p-2.5">
+              <span className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-gradient-to-r from-brand-accent-ink to-brand-accent transition-transform duration-300 group-hover:scale-x-100" />
+              <div className="inline-flex rounded-lg bg-primary/10 p-2.5 transition-transform duration-300 group-hover:scale-110">
                 <fact.icon className="size-5 text-brand-accent-ink" strokeWidth={1.75} />
               </div>
               <p className="mt-4 font-heading text-base font-medium">{fact.title}</p>
               <p className="mt-1 text-sm text-muted-foreground">{fact.description}</p>
-            </div>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </section>
 
       <section className="mx-auto max-w-5xl px-6 py-20">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
-          <div>
+          <Reveal>
             <SectionEyebrow>About</SectionEyebrow>
             <h2 className="mt-3 font-heading text-2xl font-medium tracking-tight sm:text-3xl">
               A conference that moves with the field
@@ -83,36 +84,38 @@ export default function Home() {
               Read the full story
               <ArrowUpRight />
             </Button>
-          </div>
-          <div>
+          </Reveal>
+          <Reveal delay={0.1}>
             <SectionEyebrow>Scope</SectionEyebrow>
-            <div className="mt-3 grid gap-3 sm:grid-cols-2">
+            <RevealGroup className="mt-3 grid gap-3 sm:grid-cols-2" stagger={0.06}>
               {topicGroups.map((group) => (
-                <Card
-                  key={group.title}
-                  size="sm"
-                  className="border-border transition-all hover:-translate-y-0.5 hover:border-brand-accent/40 hover:shadow-md"
-                >
-                  <CardContent>
-                    <p className="font-heading text-sm font-medium">{group.title}</p>
-                    <p className="mt-1 text-xs text-muted-foreground">
-                      {group.topics.length} topics
-                    </p>
-                  </CardContent>
-                </Card>
+                <RevealItem key={group.title}>
+                  <Card
+                    size="sm"
+                    className="border-border transition-all hover:-translate-y-0.5 hover:border-brand-accent/40 hover:shadow-md hover:shadow-brand-accent/10"
+                  >
+                    <CardContent>
+                      <p className="font-heading text-sm font-medium">{group.title}</p>
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        {group.topics.length} topics
+                      </p>
+                    </CardContent>
+                  </Card>
+                </RevealItem>
               ))}
-            </div>
+            </RevealGroup>
             <Button render={<Link href="/call-for-papers" />} nativeButton={false} variant="outline" className="mt-3">
               View all topics &amp; submission guidelines
               <ArrowUpRight />
             </Button>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="border-y border-border bg-secondary/30">
+      <section className="relative border-y border-border bg-secondary/30">
+        <div className="rule-gradient absolute inset-x-0 top-0" aria-hidden />
         <div className="mx-auto max-w-5xl px-6 py-20">
-          <div className="flex flex-wrap items-end justify-between gap-4">
+          <Reveal className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <SectionEyebrow>Timeline</SectionEyebrow>
               <h2 className="mt-3 font-heading text-2xl font-medium tracking-tight sm:text-3xl">
@@ -126,37 +129,41 @@ export default function Home() {
               Full schedule
               <ArrowUpRight />
             </Button>
-          </div>
-          <div className="mt-10">
+          </Reveal>
+          <Reveal delay={0.1} className="mt-10">
             <DatesTimeline dates={importantDates} />
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section id="sponsors" className="mx-auto max-w-5xl scroll-mt-24 px-6 py-20">
-        <SectionEyebrow>Sponsors</SectionEyebrow>
-        <h2 className="mt-3 font-heading text-2xl font-medium tracking-tight sm:text-3xl">
-          Partnering with CVMI 2027
-        </h2>
-        <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-          Sponsorship packages are being finalized. Organizations interested in
-          supporting the conference can reach out via the contact page.
-        </p>
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+        <Reveal>
+          <SectionEyebrow>Sponsors</SectionEyebrow>
+          <h2 className="mt-3 font-heading text-2xl font-medium tracking-tight sm:text-3xl">
+            Partnering with CVMI 2027
+          </h2>
+          <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
+            Sponsorship packages are being finalized. Organizations interested in
+            supporting the conference can reach out via the contact page.
+          </p>
+        </Reveal>
+        <RevealGroup className="mt-8 grid gap-4 sm:grid-cols-3" stagger={0.08}>
           {sponsorTiers.map((sponsor) => (
-            <Card key={sponsor.tier} className="border-dashed border-border/80">
-              <CardContent>
-                <div className="flex items-center justify-between gap-2">
-                  <p className="font-heading text-sm font-medium">{sponsor.tier}</p>
-                  <Badge variant="outline" className="shrink-0 font-mono text-[10px]">
-                    TBA
-                  </Badge>
-                </div>
-                <p className="mt-2 text-xs text-muted-foreground">{sponsor.note}</p>
-              </CardContent>
-            </Card>
+            <RevealItem key={sponsor.tier}>
+              <Card className="border-dashed border-border/80 transition-all hover:-translate-y-0.5 hover:border-brand-accent/30">
+                <CardContent>
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="font-heading text-sm font-medium">{sponsor.tier}</p>
+                    <Badge variant="outline" className="shrink-0 font-mono text-[10px]">
+                      TBA
+                    </Badge>
+                  </div>
+                  <p className="mt-2 text-xs text-muted-foreground">{sponsor.note}</p>
+                </CardContent>
+              </Card>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
         <Button render={<Link href="/contact" />} nativeButton={false} variant="outline" className="mt-6">
           Contact the sponsorship chairs
           <ArrowUpRight />

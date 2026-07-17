@@ -48,7 +48,8 @@ function NavChildLink({
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-sm relative">
+      <div className="rule-gradient absolute inset-x-0 bottom-0" aria-hidden />
       <div className="mx-auto flex h-16 max-w-7xl items-center px-4 sm:px-6">
         <Link href="/" className="flex shrink-0 items-center gap-2.5 font-heading text-lg font-semibold tracking-tight">
           <Image src="/images/iiitdm-logo.webp" alt="IIITDM Kancheepuram" width={36} height={36} className="shrink-0" />
@@ -64,13 +65,15 @@ export function SiteHeader() {
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className="flex items-center rounded-md px-3 py-2 text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
+                    className="group/link relative flex items-center rounded-md px-3 py-2 text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
                   >
                     {item.label}
+                    <span className="pointer-events-none absolute inset-x-3 bottom-1 h-px origin-left scale-x-0 bg-gradient-to-r from-brand-accent-ink to-brand-accent transition-transform duration-200 group-hover/link:scale-x-100" />
                   </Link>
                 ) : (
-                  <span className="flex cursor-default items-center rounded-md px-3 py-2 text-foreground/80 transition-colors group-hover:bg-muted group-hover:text-foreground">
+                  <span className="relative flex cursor-default items-center rounded-md px-3 py-2 text-foreground/80 transition-colors group-hover:bg-muted group-hover:text-foreground">
                     {item.label}
+                    <span className="pointer-events-none absolute inset-x-3 bottom-1 h-px origin-left scale-x-0 bg-gradient-to-r from-brand-accent-ink to-brand-accent transition-transform duration-200 group-hover:scale-x-100" />
                   </span>
                 )}
                 {item.children ? (

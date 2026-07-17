@@ -2,6 +2,7 @@ import { ExternalLink } from "lucide-react";
 
 import { PageHeader } from "@/components/page-header";
 import { SectionEyebrow } from "@/components/section-eyebrow";
+import { Reveal } from "@/components/motion/reveal";
 import { fullAddress, mapEmbedSrc, mapOpenUrl } from "@/lib/data/venue";
 import type { Metadata } from "next";
 
@@ -20,7 +21,7 @@ export default function VenuePage() {
 
       <section className="mx-auto max-w-4xl px-6 py-16">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr]">
-          <div>
+          <Reveal>
             <SectionEyebrow>About the campus</SectionEyebrow>
             <h2 className="mt-3 font-heading text-2xl font-medium tracking-tight">
               IIITDM Kancheepuram
@@ -50,9 +51,9 @@ export default function VenuePage() {
                 src={mapEmbedSrc}
               />
             </div>
-          </div>
+          </Reveal>
 
-          <div>
+          <Reveal delay={0.1}>
             <SectionEyebrow>Getting there</SectionEyebrow>
             <h2 className="mt-3 font-heading text-2xl font-medium tracking-tight">
               Reaching Chennai
@@ -90,7 +91,7 @@ export default function VenuePage() {
                 </p>
               </li>
             </ul>
-          </div>
+          </Reveal>
         </div>
       </section>
     </>

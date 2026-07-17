@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 
 import { PageHeader } from "@/components/page-header";
 import { CommitteeSection } from "@/components/committee-section";
+import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
 import { committeeGroups } from "@/lib/data/committees";
 import type { Metadata } from "next";
@@ -20,9 +21,11 @@ export default function CommitteesPage() {
         description="Patrons, chairs, and organizing team for CVMI 2027. Seats marked TBA are pending confirmation."
       />
       <section className="mx-auto max-w-4xl px-6 py-16">
-        <CommitteeSection groups={committeeGroups} />
+        <Reveal>
+          <CommitteeSection groups={committeeGroups} />
+        </Reveal>
 
-        <div className="mt-8 flex items-center justify-between gap-4 rounded-xl border border-dashed border-border px-5 py-4">
+        <Reveal delay={0.1} className="mt-8 flex items-center justify-between gap-4 rounded-xl border border-dashed border-border px-5 py-4">
           <p className="text-sm text-muted-foreground">
             Looking for the technical area chairs?
           </p>
@@ -30,7 +33,7 @@ export default function CommitteesPage() {
             Area Chairs
             <ArrowUpRight />
           </Button>
-        </div>
+        </Reveal>
       </section>
     </>
   );

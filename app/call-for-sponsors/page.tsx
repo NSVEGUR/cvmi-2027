@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 
 import { PageHeader } from "@/components/page-header";
 import { SectionEyebrow } from "@/components/section-eyebrow";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -45,22 +46,26 @@ export default function CallForSponsorsPage() {
       />
 
       <section className="mx-auto max-w-5xl px-6 py-16">
-        <SectionEyebrow>Why sponsor CVMI 2027</SectionEyebrow>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+        <Reveal>
+          <SectionEyebrow>Why sponsor CVMI 2027</SectionEyebrow>
+        </Reveal>
+        <RevealGroup className="mt-6 grid gap-4 sm:grid-cols-2" stagger={0.08}>
           {reasons.map((reason) => (
-            <Card key={reason.title} className="border-border">
-              <CardContent>
-                <div className="inline-flex rounded-lg bg-primary/10 p-2.5">
-                  <reason.icon className="size-5 text-brand-accent-ink" strokeWidth={1.75} />
-                </div>
-                <p className="mt-4 font-heading text-sm font-medium">{reason.title}</p>
-                <p className="mt-1 text-xs text-muted-foreground">{reason.description}</p>
-              </CardContent>
-            </Card>
+            <RevealItem key={reason.title}>
+              <Card className="border-border transition-all hover:-translate-y-0.5 hover:border-brand-accent/30 hover:shadow-md hover:shadow-brand-accent/10">
+                <CardContent>
+                  <div className="inline-flex rounded-lg bg-primary/10 p-2.5">
+                    <reason.icon className="size-5 text-brand-accent-ink" strokeWidth={1.75} />
+                  </div>
+                  <p className="mt-4 font-heading text-sm font-medium">{reason.title}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">{reason.description}</p>
+                </CardContent>
+              </Card>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
 
-        <div className="mt-12 flex items-center justify-between gap-4 rounded-xl border border-dashed border-border px-5 py-4">
+        <Reveal delay={0.15} className="mt-12 flex items-center justify-between gap-4 rounded-xl border border-dashed border-border px-5 py-4">
           <div>
             <p className="text-sm font-medium">Sponsorship tiers &amp; pricing</p>
             <p className="mt-1 text-xs text-muted-foreground">
@@ -70,7 +75,7 @@ export default function CallForSponsorsPage() {
           <Badge variant="outline" className="shrink-0 font-mono text-[10px]">
             TBA
           </Badge>
-        </div>
+        </Reveal>
 
         <Button render={<Link href="/contact" />} nativeButton={false} className="mt-8">
           Contact the sponsorship chairs

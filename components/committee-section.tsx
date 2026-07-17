@@ -72,7 +72,7 @@ function MemberCard({ member }: { member: CommitteeMember }) {
     member.tba
       ? "border-dashed border-border/80 bg-transparent"
       : "border-border bg-card",
-    member.href && "hover:-translate-y-0.5 hover:border-brand-accent/40 hover:shadow-md"
+    member.href && "hover:-translate-y-0.5 hover:border-brand-accent/40 hover:shadow-md hover:shadow-brand-accent/15"
   );
 
   if (member.href) {

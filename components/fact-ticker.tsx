@@ -24,7 +24,7 @@ function TickerItems() {
 
 export function FactTicker() {
   return (
-    <div className="overflow-hidden border-b border-border bg-secondary/50 py-2.5">
+    <div className="fade-edges-x overflow-hidden border-b border-border bg-secondary/50 py-2.5">
       <div className="flex w-max animate-marquee">
         <div className="flex shrink-0">
           <TickerItems />

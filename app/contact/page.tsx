@@ -2,6 +2,7 @@ import { ExternalLink, MapPin } from "lucide-react";
 
 import { PageHeader } from "@/components/page-header";
 import { SectionEyebrow } from "@/components/section-eyebrow";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { fullAddress, mapEmbedSrc, mapOpenUrl } from "@/lib/data/venue";
@@ -36,24 +37,28 @@ export default function ContactPage() {
       />
 
       <section className="mx-auto max-w-4xl px-6 py-16">
-        <SectionEyebrow>Organizing team</SectionEyebrow>
-        <div className="mt-6 grid gap-4 sm:grid-cols-3">
+        <Reveal>
+          <SectionEyebrow>Organizing team</SectionEyebrow>
+        </Reveal>
+        <RevealGroup className="mt-6 grid gap-4 sm:grid-cols-3" stagger={0.08}>
           {contacts.map((contact) => (
-            <Card key={contact.title} className="border-dashed border-border/80">
-              <CardContent>
-                <div className="flex items-start justify-between gap-2">
-                  <p className="font-heading text-sm font-medium">{contact.title}</p>
-                  <Badge variant="outline" className="shrink-0 font-mono text-[10px]">
-                    TBA
-                  </Badge>
-                </div>
-                <p className="mt-2 text-xs text-muted-foreground">{contact.note}</p>
-              </CardContent>
-            </Card>
+            <RevealItem key={contact.title}>
+              <Card className="border-dashed border-border/80">
+                <CardContent>
+                  <div className="flex items-start justify-between gap-2">
+                    <p className="font-heading text-sm font-medium">{contact.title}</p>
+                    <Badge variant="outline" className="shrink-0 font-mono text-[10px]">
+                      TBA
+                    </Badge>
+                  </div>
+                  <p className="mt-2 text-xs text-muted-foreground">{contact.note}</p>
+                </CardContent>
+              </Card>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
 
-        <div className="mt-12 rounded-xl border border-border p-6 sm:p-8">
+        <Reveal delay={0.15} className="mt-12 rounded-xl border border-border p-6 sm:p-8">
           <div className="grid gap-8 lg:grid-cols-2">
             <div className="flex flex-col gap-6">
               <div className="flex items-start gap-3">
@@ -85,7 +90,7 @@ export default function ContactPage() {
               />
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
     </>
   );

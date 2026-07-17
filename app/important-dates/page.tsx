@@ -1,5 +1,6 @@
 import { PageHeader } from "@/components/page-header";
 import { DatesTimeline } from "@/components/dates-timeline";
+import { Reveal } from "@/components/motion/reveal";
 import { importantDates } from "@/lib/data/dates";
 import type { Metadata } from "next";
 
@@ -16,7 +17,9 @@ export default function ImportantDatesPage() {
         description="All dates are tentative and subject to confirmation as the program committee finalizes the schedule."
       />
       <section className="mx-auto max-w-3xl px-6 py-16">
-        <DatesTimeline dates={importantDates} />
+        <Reveal>
+          <DatesTimeline dates={importantDates} />
+        </Reveal>
       </section>
     </>
   );

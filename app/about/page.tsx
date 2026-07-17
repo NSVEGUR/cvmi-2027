@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 
 import { PageHeader } from "@/components/page-header";
 import { SectionEyebrow } from "@/components/section-eyebrow";
+import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 
@@ -20,7 +21,7 @@ export default function AboutPage() {
       />
 
       <section className="mx-auto max-w-3xl px-6 py-16">
-        <div className="prose-neutral space-y-5 text-base leading-relaxed text-foreground/90">
+        <Reveal className="prose-neutral space-y-5 text-base leading-relaxed text-foreground/90">
           <p>
             In today&apos;s fast-moving world, Artificial Intelligence (AI) and
             Machine Learning (ML) models and systems are everywhere. Computer
@@ -37,9 +38,9 @@ export default function AboutPage() {
             distinguished academicians and industry experts in the fields of
             computer vision, machine intelligence, and related areas.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mt-10 rounded-xl border border-border bg-secondary/30 p-6">
+        <Reveal delay={0.05} className="mt-10 rounded-xl border border-border bg-secondary/30 p-6">
           <h2 className="font-heading text-lg font-medium">IIITDM Kancheepuram</h2>
           <p className="mt-2 text-sm text-muted-foreground">
             The Indian Institute of Information Technology, Design and
@@ -53,9 +54,9 @@ export default function AboutPage() {
             Venue &amp; travel details
             <ArrowUpRight />
           </Button>
-        </div>
+        </Reveal>
 
-        <div className="mt-6 rounded-xl border border-border p-6">
+        <Reveal delay={0.1} className="mt-6 rounded-xl border border-border p-6">
           <h2 className="font-heading text-lg font-medium">PhD Symposium</h2>
           <p className="mt-2 text-sm text-muted-foreground">
             CVMI 2027 includes a dedicated PhD Symposium for doctoral
@@ -67,22 +68,24 @@ export default function AboutPage() {
             PhD Symposium page
             <ArrowUpRight />
           </Button>
-        </div>
+        </Reveal>
       </section>
 
       <section className="border-t border-border bg-secondary/20">
         <div className="mx-auto max-w-3xl px-6 py-16">
-          <SectionEyebrow>Since 2022</SectionEyebrow>
-          <h2 className="mt-3 font-heading text-2xl font-medium tracking-tight">
-            A rotating host, a shared community
-          </h2>
-          <p className="mt-3 text-sm text-muted-foreground">
-            The 1st CVMI (2022) and 3rd CVMI (2024) were organized by IIIT
-            Allahabad, while the 2nd CVMI (2023) was hosted by ABV-IIITM
-            Gwalior. The 4th CVMI (2025) was held at NIT Rourkela, and CVMI
-            2026 was hosted by COEP Technological University, Pune. See the
-            History menu above for the full list of past editions.
-          </p>
+          <Reveal>
+            <SectionEyebrow>Since 2022</SectionEyebrow>
+            <h2 className="mt-3 font-heading text-2xl font-medium tracking-tight">
+              A rotating host, a shared community
+            </h2>
+            <p className="mt-3 text-sm text-muted-foreground">
+              The 1st CVMI (2022) and 3rd CVMI (2024) were organized by IIIT
+              Allahabad, while the 2nd CVMI (2023) was hosted by ABV-IIITM
+              Gwalior. The 4th CVMI (2025) was held at NIT Rourkela, and CVMI
+              2026 was hosted by COEP Technological University, Pune. See the
+              History menu above for the full list of past editions.
+            </p>
+          </Reveal>
         </div>
       </section>
     </>
