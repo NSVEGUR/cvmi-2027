@@ -1,11 +1,12 @@
 export type NavLink = {
   label: string;
-  href: string;
+  href?: string;
   description?: string;
   external?: boolean;
 };
 
-export type NavItem = NavLink & {
+export type NavItem = Omit<NavLink, "href"> & {
+  href: string;
   children?: NavLink[];
 };
 
@@ -46,16 +47,23 @@ export const navItems: NavItem[] = [
     ],
   },
   { label: "Venue & Travel", href: "/venue" },
-  { label: "Sponsors", href: "/sponsors" },
+  {
+    label: "Sponsors",
+    href: "/#sponsors",
+    children: [
+      { label: "Sponsor Tiers", href: "/#sponsors", description: "Current sponsors & tiers" },
+      { label: "Call for Sponsors", href: "/call-for-sponsors", description: "Why partner with CVMI 2027" },
+    ],
+  },
   {
     label: "History",
-    href: "/history",
+    href: "",
     children: [
       { label: "CVMI 2026", href: "https://cvmi2026.coeptech.ac.in/", description: "COEP Technological University, Pune", external: true },
-      { label: "CVMI 2025", href: "/history#2025", description: "NIT Rourkela" },
-      { label: "CVMI 2024", href: "/history#2024", description: "IIIT Allahabad" },
-      { label: "CVMI 2023", href: "/history#2023", description: "ABV-IIITM Gwalior" },
-      { label: "CVMI 2022", href: "/history#2022", description: "IIIT Allahabad" },
+      { label: "CVMI 2025", description: "NIT Rourkela" },
+      { label: "CVMI 2024", description: "IIIT Allahabad" },
+      { label: "CVMI 2023", description: "ABV-IIITM Gwalior" },
+      { label: "CVMI 2022", description: "IIIT Allahabad" },
     ],
   },
   { label: "Contact", href: "/contact" },

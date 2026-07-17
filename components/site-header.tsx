@@ -24,11 +24,14 @@ function NavChildLink({
   className,
   children,
 }: {
-  href: string;
+  href?: string;
   external?: boolean;
   className?: string;
   children: React.ReactNode;
 }) {
+  if (!href) {
+    return <div className={className}>{children}</div>;
+  }
   if (external) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
@@ -46,30 +49,36 @@ function NavChildLink({
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-sm">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2.5 font-heading text-lg font-semibold tracking-tight">
+      <div className="mx-auto flex h-16 max-w-7xl items-center px-4 sm:px-6">
+        <Link href="/" className="flex shrink-0 items-center gap-2.5 font-heading text-lg font-semibold tracking-tight">
           <Image src="/images/iiitdm-logo.webp" alt="IIITDM Kancheepuram" width={36} height={36} className="shrink-0" />
           <span>
             CVMI<span className="text-brand-accent-ink">&apos;27</span>
           </span>
         </Link>
 
-        <nav className="hidden lg:block">
+        <nav className="ml-10 hidden lg:block">
           <ul className="flex items-center gap-0.5 font-sans text-sm">
             {navItems.map((item) => (
-              <li key={item.href} className="group relative">
-                <Link
-                  href={item.href}
-                  className="flex items-center rounded-md px-3 py-2 text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
-                >
-                  {item.label}
-                </Link>
+              <li key={item.label} className="group relative">
+                {item.href ? (
+                  <Link
+                    href={item.href}
+                    className="flex items-center rounded-md px-3 py-2 text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <span className="flex cursor-default items-center rounded-md px-3 py-2 text-foreground/80 transition-colors group-hover:bg-muted group-hover:text-foreground">
+                    {item.label}
+                  </span>
+                )}
                 {item.children ? (
                   <div className="invisible absolute left-0 top-full z-50 w-64 translate-y-1 pt-2 opacity-0 transition-all duration-150 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
                     <div className="rounded-lg border border-border bg-popover p-1.5 shadow-lg ring-1 ring-foreground/5">
                       {item.children.map((child) => (
                         <NavChildLink
-                          key={child.href}
+                          key={child.href ?? child.label}
                           href={child.href}
                           external={child.external}
                           className="block rounded-md px-3 py-2 text-sm transition-colors hover:bg-muted"
@@ -88,14 +97,7 @@ export function SiteHeader() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-2">
-          <Button
-            render={<Link href="/registration" />} nativeButton={false}
-            className="hidden bg-brand-accent text-white hover:bg-brand-accent hover:brightness-110 sm:inline-flex"
-          >
-            Register
-          </Button>
-
+        <div className="ml-auto flex items-center gap-2">
           <Sheet>
             <SheetTrigger
               render={
@@ -113,21 +115,23 @@ export function SiteHeader() {
                 <Accordion className="flex flex-col gap-0.5">
                   {navItems.map((item) =>
                     item.children ? (
-                      <AccordionItem key={item.href} value={item.href} className="border-none">
+                      <AccordionItem key={item.label} value={item.label} className="border-none">
                         <AccordionTrigger className="rounded-md px-3 py-2.5 no-underline hover:bg-muted hover:no-underline">
                           {item.label}
                         </AccordionTrigger>
                         <AccordionContent className="pb-1 pl-3">
                           <div className="flex flex-col gap-0.5">
-                            <Link
-                              href={item.href}
-                              className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted"
-                            >
-                              Overview
-                            </Link>
+                            {item.href ? (
+                              <Link
+                                href={item.href}
+                                className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted"
+                              >
+                                Overview
+                              </Link>
+                            ) : null}
                             {item.children.map((child) => (
                               <NavChildLink
-                                key={child.href}
+                                key={child.href ?? child.label}
                                 href={child.href}
                                 external={child.external}
                                 className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted"
@@ -149,12 +153,6 @@ export function SiteHeader() {
                     )
                   )}
                 </Accordion>
-                <Button
-                  render={<Link href="/registration" />} nativeButton={false}
-                  className="mt-4 w-full bg-brand-accent text-white hover:bg-brand-accent hover:brightness-110"
-                >
-                  Register
-                </Button>
               </div>
             </SheetContent>
           </Sheet>

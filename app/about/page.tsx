@@ -4,8 +4,6 @@ import { ArrowUpRight } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 import { SectionEyebrow } from "@/components/section-eyebrow";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { cvmiHistory } from "@/lib/data/topics";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -82,35 +80,9 @@ export default function AboutPage() {
             The 1st CVMI (2022) and 3rd CVMI (2024) were organized by IIIT
             Allahabad, while the 2nd CVMI (2023) was hosted by ABV-IIITM
             Gwalior. The 4th CVMI (2025) was held at NIT Rourkela, and CVMI
-            2026 was hosted by COEP Technological University, Pune.
+            2026 was hosted by COEP Technological University, Pune. See the
+            History menu above for the full list of past editions.
           </p>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            {cvmiHistory.map((edition) => (
-              <Card
-                key={edition.year}
-                size="sm"
-                className={edition.current ? "border-brand-accent" : "border-border"}
-              >
-                <CardContent className="flex items-center justify-between">
-                  <div>
-                    <p className="font-heading text-sm font-medium">
-                      {edition.edition} &middot; {edition.year}
-                    </p>
-                    <p className="text-xs text-muted-foreground">{edition.host}</p>
-                  </div>
-                  {edition.current ? (
-                    <span className="font-mono text-[10px] uppercase tracking-wide text-brand-accent-ink">
-                      Current
-                    </span>
-                  ) : null}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <Button render={<Link href="/history" />} nativeButton={false} variant="outline" className="mt-6">
-            Full CVMI history
-            <ArrowUpRight />
-          </Button>
         </div>
       </section>
     </>

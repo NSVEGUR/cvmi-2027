@@ -2,12 +2,20 @@ import Link from "next/link";
 import { ArrowUpRight, BookMarked, GraduationCap, MapPin, Users } from "lucide-react";
 
 import { Hero } from "@/components/hero";
+import { FactTicker } from "@/components/fact-ticker";
 import { SectionEyebrow } from "@/components/section-eyebrow";
 import { DatesTimeline } from "@/components/dates-timeline";
 import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { importantDates } from "@/lib/data/dates";
-import { topicGroups, cvmiHistory } from "@/lib/data/topics";
+import { topicGroups } from "@/lib/data/topics";
+
+const sponsorTiers = [
+  { tier: "Platinum", note: "Sponsorship tiers and confirmed partners will be announced here." },
+  { tier: "Gold", note: "Interested organizations can reach the sponsorship chairs via the contact page." },
+  { tier: "Silver", note: "Details of benefits per tier will be published alongside the call for sponsors." },
+];
 
 const facts = [
   {
@@ -36,12 +44,19 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <FactTicker />
 
       <section className="border-b border-border">
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4 my-12 mx-6 lg:mx-auto">
           {facts.map((fact) => (
-            <div key={fact.title} className="bg-card px-6 py-7">
-              <fact.icon className="size-5 text-brand-accent-ink" strokeWidth={1.75} />
+            <div
+              key={fact.title}
+              className="group relative bg-card px-6 py-7 transition-colors hover:bg-accent/40"
+            >
+              <span className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-brand-accent transition-transform duration-300 group-hover:scale-x-100" />
+              <div className="inline-flex rounded-lg bg-primary/10 p-2.5">
+                <fact.icon className="size-5 text-brand-accent-ink" strokeWidth={1.75} />
+              </div>
               <p className="mt-4 font-heading text-base font-medium">{fact.title}</p>
               <p className="mt-1 text-sm text-muted-foreground">{fact.description}</p>
             </div>
@@ -73,7 +88,11 @@ export default function Home() {
             <SectionEyebrow>Scope</SectionEyebrow>
             <div className="mt-3 grid gap-3 sm:grid-cols-2">
               {topicGroups.map((group) => (
-                <Card key={group.title} size="sm" className="border-border">
+                <Card
+                  key={group.title}
+                  size="sm"
+                  className="border-border transition-all hover:-translate-y-0.5 hover:border-brand-accent/40 hover:shadow-md"
+                >
                   <CardContent>
                     <p className="font-heading text-sm font-medium">{group.title}</p>
                     <p className="mt-1 text-xs text-muted-foreground">
@@ -114,34 +133,34 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 py-20">
-        <SectionEyebrow>Series</SectionEyebrow>
+      <section id="sponsors" className="mx-auto max-w-5xl scroll-mt-24 px-6 py-20">
+        <SectionEyebrow>Sponsors</SectionEyebrow>
         <h2 className="mt-3 font-heading text-2xl font-medium tracking-tight sm:text-3xl">
-          CVMI, edition by edition
+          Partnering with CVMI 2027
         </h2>
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {cvmiHistory.map((edition) => (
-            <div
-              key={edition.year}
-              className={`rounded-lg border px-4 py-3.5 ${
-                edition.current
-                  ? "border-brand-accent bg-accent/40"
-                  : "border-border bg-card"
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-xs text-muted-foreground">{edition.year}</span>
-                {edition.current ? (
-                  <span className="font-mono text-[10px] uppercase tracking-wide text-brand-accent-ink">
-                    This edition
-                  </span>
-                ) : null}
-              </div>
-              <p className="mt-1 font-heading text-sm font-medium">{edition.edition}</p>
-              <p className="text-xs text-muted-foreground">{edition.host}</p>
-            </div>
+        <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
+          Sponsorship packages are being finalized. Organizations interested in
+          supporting the conference can reach out via the contact page.
+        </p>
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          {sponsorTiers.map((sponsor) => (
+            <Card key={sponsor.tier} className="border-dashed border-border/80">
+              <CardContent>
+                <div className="flex items-center justify-between gap-2">
+                  <p className="font-heading text-sm font-medium">{sponsor.tier}</p>
+                  <Badge variant="outline" className="shrink-0 font-mono text-[10px]">
+                    TBA
+                  </Badge>
+                </div>
+                <p className="mt-2 text-xs text-muted-foreground">{sponsor.note}</p>
+              </CardContent>
+            </Card>
           ))}
         </div>
+        <Button render={<Link href="/contact" />} nativeButton={false} variant="outline" className="mt-6">
+          Contact the sponsorship chairs
+          <ArrowUpRight />
+        </Button>
       </section>
     </>
   );
