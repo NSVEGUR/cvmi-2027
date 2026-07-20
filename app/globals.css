@@ -51,7 +51,7 @@
 }
 
 /*
- * THEME COLOR — change the conference brand color here in one shot.
+ * THEME COLOR - change the conference brand color here in one shot.
  * This site is Indigo end-to-end (light theme only, no dark mode, by
  * design for an official institutional site). To retheme, only these
  * values need to change: --primary, --primary-foreground, --ring,
@@ -102,7 +102,8 @@
   body {
     @apply bg-background text-foreground;
   }
-  button:not(:disabled), [role="button"]:not(:disabled) {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
     cursor: pointer;
   }
   html {
@@ -121,13 +122,30 @@
 
   .bg-mesh-glow {
     background-image:
-      radial-gradient(38rem 26rem at 12% -10%, color-mix(in oklch, var(--brand-accent), transparent 78%), transparent 60%),
-      radial-gradient(30rem 24rem at 100% 8%, color-mix(in oklch, #a855f7, transparent 82%), transparent 65%),
-      radial-gradient(26rem 22rem at 88% 100%, color-mix(in oklch, var(--brand-accent), transparent 85%), transparent 60%);
+      radial-gradient(
+        38rem 26rem at 12% -10%,
+        color-mix(in oklch, var(--brand-accent), transparent 78%),
+        transparent 60%
+      ),
+      radial-gradient(
+        30rem 24rem at 100% 8%,
+        color-mix(in oklch, #a855f7, transparent 82%),
+        transparent 65%
+      ),
+      radial-gradient(
+        26rem 22rem at 88% 100%,
+        color-mix(in oklch, var(--brand-accent), transparent 85%),
+        transparent 60%
+      );
   }
 
   .text-gradient-brand {
-    background-image: linear-gradient(100deg, var(--brand-accent-ink) 10%, var(--brand-accent) 55%, #a855f7 100%);
+    background-image: linear-gradient(
+      100deg,
+      var(--brand-accent-ink) 10%,
+      var(--brand-accent) 55%,
+      #a855f7 100%
+    );
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -135,11 +153,18 @@
 
   .rule-gradient {
     height: 1px;
-    background-image: linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      var(--border) 20%,
+      var(--border) 80%,
+      transparent
+    );
   }
 
   @keyframes float-slow {
-    0%, 100% {
+    0%,
+    100% {
       transform: translate3d(0, 0, 0) scale(1);
     }
     50% {
@@ -152,7 +177,8 @@
   }
 
   @keyframes float-slower {
-    0%, 100% {
+    0%,
+    100% {
       transform: translate3d(0, 0, 0) scale(1);
     }
     50% {

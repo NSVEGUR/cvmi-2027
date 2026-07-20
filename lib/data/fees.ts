@@ -7,16 +7,40 @@ export type FeeRow = {
 export const indianFees: FeeRow[] = [
   { category: "IEEE/IAPR Student Author", early: "₹10,620", late: "₹11,800" },
   { category: "IEEE/IAPR Student Attendee", early: "₹3,540", late: "₹5,900" },
-  { category: "Non-IEEE/IAPR Student Author", early: "₹11,800", late: "₹12,980" },
-  { category: "Non-IEEE/IAPR Student Attendee", early: "₹4,720", late: "₹7,080" },
+  {
+    category: "Non-IEEE/IAPR Student Author",
+    early: "₹11,800",
+    late: "₹12,980",
+  },
+  {
+    category: "Non-IEEE/IAPR Student Attendee",
+    early: "₹4,720",
+    late: "₹7,080",
+  },
   { category: "IEEE/IAPR Faculty Author", early: "₹12,980", late: "₹14,160" },
   { category: "IEEE/IAPR Faculty Attendee", early: "₹5,900", late: "₹8,260" },
-  { category: "Non-IEEE/IAPR Faculty Author", early: "₹14,160", late: "₹15,340" },
-  { category: "Non-IEEE/IAPR Faculty Attendee", early: "₹7,080", late: "₹9,440" },
+  {
+    category: "Non-IEEE/IAPR Faculty Author",
+    early: "₹14,160",
+    late: "₹15,340",
+  },
+  {
+    category: "Non-IEEE/IAPR Faculty Attendee",
+    early: "₹7,080",
+    late: "₹9,440",
+  },
   { category: "IEEE/IAPR Industry Author", early: "₹14,160", late: "₹16,520" },
   { category: "IEEE/IAPR Industry Attendee", early: "₹8,260", late: "₹10,620" },
-  { category: "Non-IEEE/IAPR Industry Author", early: "₹15,340", late: "₹17,700" },
-  { category: "Non-IEEE/IAPR Industry Attendee", early: "₹9,440", late: "₹11,800" },
+  {
+    category: "Non-IEEE/IAPR Industry Author",
+    early: "₹15,340",
+    late: "₹17,700",
+  },
+  {
+    category: "Non-IEEE/IAPR Industry Attendee",
+    early: "₹9,440",
+    late: "₹11,800",
+  },
 ];
 
 export const foreignFees: FeeRow[] = [
@@ -37,7 +61,7 @@ export const foreignFees: FeeRow[] = [
 export const registrationGuidelines: { title: string; body: string }[] = [
   {
     title: "Paper presentation requirement",
-    body: "All papers must be presented in person at CVMI 2027. For a paper to be included in the CVMI 2027 proceedings (submitted to IEEE Xplore), it must be presented at the conference in person — no-show papers will not be included, and no requests for online presentation will be considered, since this is an in-person event designed to promote networking among participants.",
+    body: "All papers must be presented in person at CVMI 2027. For a paper to be included in the CVMI 2027 proceedings (submitted to IEEE Xplore), it must be presented at the conference in person - no-show papers will not be included, and no requests for online presentation will be considered, since this is an in-person event designed to promote networking among participants.",
   },
   {
     title: "Payment policy",
@@ -49,7 +73,7 @@ export const registrationGuidelines: { title: string; body: string }[] = [
   },
   {
     title: "Verification requirements",
-    body: "Students and IEEE/IAPR members must carry valid proof at registration — a current Institute/College/University ID for students, and a current-year membership card for IEEE/IAPR members.",
+    body: "Students and IEEE/IAPR members must carry valid proof at registration - a current Institute/College/University ID for students, and a current-year membership card for IEEE/IAPR members.",
   },
   {
     title: "Non-author registration",

@@ -21,12 +21,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CVMI 2027 | 6th International Conference on Computer Vision & Machine Intelligence",
+  title:
+    "CVMI 2027 | 6th International Conference on Computer Vision & Machine Intelligence",
   description:
-    "CVMI 2027 — the 6th International Conference on Computer Vision & Machine Intelligence, organized by the Department of Computer Science and Engineering, IIITDM Kancheepuram, June 17–19, 2027.",
+    "CVMI 2027 - the 6th International Conference on Computer Vision & Machine Intelligence, organized by the Department of Computer Science and Engineering, IIITDM Kancheepuram, June 17–19, 2027.",
 };
 
-// Light theme only, by design — no dark mode toggle or system-preference
+// Light theme only, by design - no dark mode toggle or system-preference
 // switching, consistent with other official Indian institutional sites.
 export const viewport: Viewport = {
   colorScheme: "light",
