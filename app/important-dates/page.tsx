@@ -1,7 +1,7 @@
 import { PageHeader } from "@/components/page-header";
-import { DatesTimeline } from "@/components/dates-timeline";
+import { DatesTable } from "@/components/dates-table";
 import { Reveal } from "@/components/motion/reveal";
-import { importantDates } from "@/lib/data/dates";
+import { dateTableRows, reviewProcessNote } from "@/lib/data/dates";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,7 +18,10 @@ export default function ImportantDatesPage() {
       />
       <section className="mx-auto max-w-3xl px-6 py-16">
         <Reveal>
-          <DatesTimeline dates={importantDates} />
+          <DatesTable rows={dateTableRows} />
+        </Reveal>
+        <Reveal delay={0.1} className="mt-6 text-sm leading-relaxed text-muted-foreground">
+          <p>{reviewProcessNote}</p>
         </Reveal>
       </section>
     </>

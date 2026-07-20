@@ -11,29 +11,36 @@ export type NavItem = Omit<NavLink, "href"> & {
 };
 
 export const navItems: NavItem[] = [
-  { label: "Home", href: "/" },
-  {
-    label: "About",
-    href: "/about",
-    children: [
-      { label: "About CVMI 2027", href: "/about", description: "The conference, the host, the format" },
-      { label: "PhD Symposium", href: "/phd-symposium", description: "Doctoral consortium" },
-    ],
-  },
   {
     label: "Committees",
     href: "/committees",
     children: [
-      { label: "Organizing Committee", href: "/committees", description: "Patrons, chairs & organizing team" },
-      { label: "Area Chairs", href: "/committees/area-chairs", description: "Technical area chairs" },
+      {
+        label: "Organizing Committee",
+        href: "/committees",
+        description: "Patrons, chairs & organizing team",
+      },
+      {
+        label: "Area Chairs",
+        href: "/committees/area-chairs",
+        description: "Technical area chairs",
+      },
     ],
   },
   {
     label: "Call for Papers",
     href: "/call-for-papers",
     children: [
-      { label: "Topics & Guidelines", href: "/call-for-papers", description: "Scope, tracks, submission format" },
-      { label: "Camera-Ready Instructions", href: "/camera-ready", description: "Final manuscript preparation" },
+      {
+        label: "Topics & Guidelines",
+        href: "/call-for-papers",
+        description: "Scope, tracks, submission format",
+      },
+      {
+        label: "Camera-Ready Instructions",
+        href: "/camera-ready",
+        description: "Final manuscript preparation",
+      },
     ],
   },
   { label: "Important Dates", href: "/important-dates" },
@@ -42,8 +49,21 @@ export const navItems: NavItem[] = [
     label: "Program",
     href: "/program",
     children: [
-      { label: "Schedule", href: "/program", description: "Sessions & timings" },
-      { label: "Keynote Speakers", href: "/keynote-speakers", description: "Invited talks" },
+      {
+        label: "Schedule",
+        href: "/program",
+        description: "Sessions & timings",
+      },
+      {
+        label: "Keynote Speakers",
+        href: "/keynote-speakers",
+        description: "Invited talks",
+      },
+      {
+        label: "PhD Symposium",
+        href: "/phd-symposium",
+        description: "Doctoral consortium",
+      },
     ],
   },
   { label: "Venue & Travel", href: "/venue" },
@@ -51,24 +71,36 @@ export const navItems: NavItem[] = [
     label: "Sponsors",
     href: "/#sponsors",
     children: [
-      { label: "Sponsor Tiers", href: "/#sponsors", description: "Current sponsors & tiers" },
-      { label: "Call for Sponsors", href: "/call-for-sponsors", description: "Why partner with CVMI 2027" },
+      {
+        label: "Sponsor Tiers",
+        href: "/#sponsors",
+        description: "Current sponsors & tiers",
+      },
+      {
+        label: "Call for Sponsors",
+        href: "/call-for-sponsors",
+        description: "Why partner with CVMI 2027",
+      },
     ],
   },
   {
     label: "History",
     href: "",
     children: [
-      { label: "CVMI 2026", href: "https://cvmi2026.coeptech.ac.in/", description: "COEP Technological University, Pune", external: true },
+      {
+        label: "CVMI 2026",
+        href: "https://cvmi2026.coeptech.ac.in/",
+        description: "COEP Technological University, Pune",
+        external: true,
+      },
       { label: "CVMI 2025", description: "NIT Rourkela" },
       { label: "CVMI 2024", description: "IIIT Allahabad" },
       { label: "CVMI 2023", description: "ABV-IIITM Gwalior" },
       { label: "CVMI 2022", description: "IIIT Allahabad" },
     ],
   },
-  { label: "Contact", href: "/contact" },
 ];
 
 export const flatNavItems: NavLink[] = navItems.flatMap((item) =>
-  item.children ? item.children : [item]
+  item.children ? item.children : [item],
 );

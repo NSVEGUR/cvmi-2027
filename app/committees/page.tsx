@@ -18,18 +18,20 @@ export default function CommitteesPage() {
       <PageHeader
         eyebrow="Organization"
         title="Organizing committee"
-        description="Patrons, chairs, and organizing team for CVMI 2027. Seats marked TBA are pending confirmation."
+        description="Patrons, chairs, and organizing team for CVMI 2027."
       />
       <section className="mx-auto max-w-4xl px-6 py-16">
-        <Reveal>
-          <CommitteeSection groups={committeeGroups} />
-        </Reveal>
+        <CommitteeSection groups={committeeGroups} />
 
-        <Reveal delay={0.1} className="mt-8 flex items-center justify-between gap-4 rounded-xl border border-dashed border-border px-5 py-4">
+        <Reveal className="mt-8 flex items-center justify-between gap-4 rounded-xl border border-dashed border-border px-5 py-4">
           <p className="text-sm text-muted-foreground">
             Looking for the technical area chairs?
           </p>
-          <Button render={<Link href="/committees/area-chairs" />} nativeButton={false} variant="outline">
+          <Button
+            render={<Link href="/committees/area-chairs" />}
+            nativeButton={false}
+            variant="outline"
+          >
             Area Chairs
             <ArrowUpRight />
           </Button>

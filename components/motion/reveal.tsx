@@ -25,7 +25,7 @@ export function Reveal({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, amount: 0.3 }}
+      viewport={{ once, amount: "some" }}
       variants={{
         hidden: { opacity: 0, y },
         visible: { opacity: 1, y: 0 },
@@ -55,7 +55,7 @@ export function RevealGroup({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, amount: 0.2 }}
+      viewport={{ once, amount: "some" }}
       variants={{
         hidden: {},
         visible: { transition: { staggerChildren: stagger } },

@@ -33,7 +33,11 @@ export const committeeGroups: CommitteeGroup[] = [
         href: "https://www.iiitm.ac.in/index.php/director",
         image: "/images/committees/sri-niwas-singh.jpg",
       },
-      { name: "To be announced", affiliation: "International Patron", tba: true },
+      {
+        name: "To be announced",
+        affiliation: "International Patron",
+        tba: true,
+      },
     ],
   },
   {
@@ -45,14 +49,22 @@ export const committeeGroups: CommitteeGroup[] = [
         href: "https://www.iitr.ac.in/~CSE/Balasubramanian_R_",
         image: "/images/committees/r-balasubramanian.jpg",
       },
-      { name: "To be announced", affiliation: "International Chair", tba: true },
+      {
+        name: "To be announced",
+        affiliation: "International Chair",
+        tba: true,
+      },
       {
         name: "Prof. Satish Kumar Singh",
         affiliation: "IIIT Allahabad",
         href: "https://cvbl.iiita.ac.in/sks/",
         image: "/images/committees/satish-kumar-singh.png",
       },
-      { name: "To be announced", affiliation: "International Chair", tba: true },
+      {
+        name: "To be announced",
+        affiliation: "International Chair",
+        tba: true,
+      },
     ],
   },
   {
@@ -260,6 +272,7 @@ export const areaChairsGroup: CommitteeGroup = {
       name: "Dr. Anish Chand Turlapaty",
       affiliation: "IIIT Sri City",
       href: "https://iiits.ac.in/people/regular-faculty/dr-anish-chand-turlapaty/",
+      image: "/images/committees/anish-chand-turlapaty.jpg",
     },
     {
       name: "Dr. Manish Okade",
@@ -271,6 +284,7 @@ export const areaChairsGroup: CommitteeGroup = {
       name: "Dr. Y. Raja Vara Prasad",
       affiliation: "IIIT Sri City",
       href: "https://iiits.ac.in/people/regular-faculty/dr-raja-vara-prasad/",
+      image: "/images/committees/raja-vara-prasad.jpg",
     },
     {
       name: "Dr. Rakesh Kumar Sanodiya",

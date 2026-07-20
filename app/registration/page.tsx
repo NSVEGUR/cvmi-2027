@@ -2,6 +2,8 @@ import { PageHeader } from "@/components/page-header";
 import { SectionEyebrow } from "@/components/section-eyebrow";
 import { FeeTable } from "@/components/fee-table";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
+import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import { indianFees, foreignFees, registrationGuidelines } from "@/lib/data/fees";
 import type { Metadata } from "next";
 
@@ -42,11 +44,20 @@ export default function RegistrationPage() {
               Registration policies
             </h2>
           </Reveal>
-          <RevealGroup className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2" stagger={0.06}>
-            {registrationGuidelines.map((item) => (
+          <RevealGroup className="mt-8 grid gap-4 sm:grid-cols-2" stagger={0.06}>
+            {registrationGuidelines.map((item, index) => (
               <RevealItem key={item.title}>
-                <h3 className="font-heading text-sm font-medium">{item.title}</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground">{item.body}</p>
+                <Card
+                  className={cn(
+                    "h-full border-border transition-all hover:-translate-y-0.5 hover:border-brand-accent/30 hover:shadow-md hover:shadow-brand-accent/10",
+                    index % 2 === 0 ? "bg-accent/40" : "bg-card"
+                  )}
+                >
+                  <CardContent>
+                    <h3 className="font-heading text-sm font-medium">{item.title}</h3>
+                    <p className="mt-1.5 text-sm text-muted-foreground">{item.body}</p>
+                  </CardContent>
+                </Card>
               </RevealItem>
             ))}
           </RevealGroup>

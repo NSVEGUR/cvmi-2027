@@ -34,7 +34,12 @@ function NavChildLink({
   }
   if (external) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+      >
         {children}
       </a>
     );
@@ -50,28 +55,39 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-sm relative">
       <div className="rule-gradient absolute inset-x-0 bottom-0" aria-hidden />
-      <div className="mx-auto flex h-16 max-w-7xl items-center px-4 sm:px-6">
-        <Link href="/" className="flex shrink-0 items-center gap-2.5 font-heading text-lg font-semibold tracking-tight">
-          <Image src="/images/iiitdm-logo.webp" alt="IIITDM Kancheepuram" width={36} height={36} className="shrink-0" />
-          <span>
-            CVMI<span className="text-brand-accent-ink">&apos;27</span>
+      <div className="mx-auto grid h-24 max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-4 px-4 sm:px-6">
+        <Link href="/" className="flex shrink-0 items-center gap-3">
+          <Image
+            src="/images/iiitdm-logo.webp"
+            alt="IIITDM Kancheepuram"
+            width={56}
+            height={56}
+            className="shrink-0"
+          />
+          <span className="flex flex-col leading-none">
+            <span className="font-heading text-2xl font-bold tracking-tight text-brand-accent-ink sm:text-3xl">
+              CVMI
+            </span>
+            <span className="-mt-1 font-heading text-base font-semibold tracking-tight text-foreground">
+              2027
+            </span>
           </span>
         </Link>
 
-        <nav className="ml-10 hidden lg:block">
+        <nav className="hidden justify-center lg:flex">
           <ul className="flex items-center gap-0.5 font-sans text-sm">
             {navItems.map((item) => (
               <li key={item.label} className="group relative">
                 {item.href ? (
                   <Link
                     href={item.href}
-                    className="group/link relative flex items-center rounded-md px-3 py-2 text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
+                    className="group/link relative flex items-center rounded-md px-3 py-2 text-foreground/80 transition-colors hover:bg-brand-accent/20 hover:text-brand-accent-ink"
                   >
                     {item.label}
                     <span className="pointer-events-none absolute inset-x-3 bottom-1 h-px origin-left scale-x-0 bg-gradient-to-r from-brand-accent-ink to-brand-accent transition-transform duration-200 group-hover/link:scale-x-100" />
                   </Link>
                 ) : (
-                  <span className="relative flex cursor-default items-center rounded-md px-3 py-2 text-foreground/80 transition-colors group-hover:bg-muted group-hover:text-foreground">
+                  <span className="relative flex cursor-default items-center rounded-md px-3 py-2 text-foreground/80 transition-colors group-hover:bg-brand-accent/20 group-hover:text-brand-accent-ink">
                     {item.label}
                     <span className="pointer-events-none absolute inset-x-3 bottom-1 h-px origin-left scale-x-0 bg-gradient-to-r from-brand-accent-ink to-brand-accent transition-transform duration-200 group-hover:scale-x-100" />
                   </span>
@@ -84,11 +100,15 @@ export function SiteHeader() {
                           key={child.href ?? child.label}
                           href={child.href}
                           external={child.external}
-                          className="block rounded-md px-3 py-2 text-sm transition-colors hover:bg-muted"
+                          className="block rounded-md px-3 py-2 text-sm transition-colors hover:bg-brand-accent/20"
                         >
-                          <span className="block font-medium text-foreground">{child.label}</span>
+                          <span className="block font-medium text-foreground">
+                            {child.label}
+                          </span>
                           {child.description ? (
-                            <span className="block text-xs text-muted-foreground">{child.description}</span>
+                            <span className="block text-xs text-muted-foreground">
+                              {child.description}
+                            </span>
                           ) : null}
                         </NavChildLink>
                       ))}
@@ -100,7 +120,7 @@ export function SiteHeader() {
           </ul>
         </nav>
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="flex items-center justify-end gap-2">
           <Sheet>
             <SheetTrigger
               render={
@@ -118,8 +138,12 @@ export function SiteHeader() {
                 <Accordion className="flex flex-col gap-0.5">
                   {navItems.map((item) =>
                     item.children ? (
-                      <AccordionItem key={item.label} value={item.label} className="border-none">
-                        <AccordionTrigger className="rounded-md px-3 py-2.5 no-underline hover:bg-muted hover:no-underline">
+                      <AccordionItem
+                        key={item.label}
+                        value={item.label}
+                        className="border-none"
+                      >
+                        <AccordionTrigger className="rounded-md px-3 py-2.5 no-underline hover:bg-brand-accent/20 hover:text-brand-accent-ink hover:no-underline">
                           {item.label}
                         </AccordionTrigger>
                         <AccordionContent className="pb-1 pl-3">
@@ -127,7 +151,7 @@ export function SiteHeader() {
                             {item.href ? (
                               <Link
                                 href={item.href}
-                                className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted"
+                                className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-brand-accent/20 hover:text-brand-accent-ink"
                               >
                                 Overview
                               </Link>
@@ -137,7 +161,7 @@ export function SiteHeader() {
                                 key={child.href ?? child.label}
                                 href={child.href}
                                 external={child.external}
-                                className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted"
+                                className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-brand-accent/20 hover:text-brand-accent-ink"
                               >
                                 {child.label}
                               </NavChildLink>
@@ -149,11 +173,11 @@ export function SiteHeader() {
                       <Link
                         key={item.href}
                         href={item.href}
-                        className="rounded-md px-3 py-2.5 text-sm font-medium hover:bg-muted"
+                        className="rounded-md px-3 py-2.5 text-sm font-medium hover:bg-brand-accent/20 hover:text-brand-accent-ink"
                       >
                         {item.label}
                       </Link>
-                    )
+                    ),
                   )}
                 </Accordion>
               </div>

@@ -21,11 +21,9 @@ export default function AreaChairsPage() {
         description="Technical area chairs overseeing the review process for CVMI 2027."
       />
       <section className="mx-auto max-w-4xl px-6 py-16">
-        <Reveal>
-          <CommitteeSection groups={[areaChairsGroup]} />
-        </Reveal>
+        <CommitteeSection groups={[areaChairsGroup]} />
 
-        <Reveal delay={0.1} className="mt-8 flex items-center justify-between gap-4 rounded-xl border border-dashed border-border px-5 py-4">
+        <Reveal className="mt-8 flex items-center justify-between gap-4 rounded-xl border border-dashed border-border px-5 py-4">
           <p className="text-sm text-muted-foreground">
             Looking for patrons, chairs, and the organizing team?
           </p>
