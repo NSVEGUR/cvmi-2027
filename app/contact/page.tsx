@@ -67,7 +67,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h2 className="font-heading text-sm font-medium">Address</h2>
-                  <p className="mt-1 text-sm text-muted-foreground">{fullAddress}</p>
+                  <p className="mt-1 text-base text-muted-foreground">{fullAddress}</p>
                 </div>
               </div>
               <a

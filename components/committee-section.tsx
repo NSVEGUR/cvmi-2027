@@ -8,14 +8,14 @@ import type { CommitteeGroup, CommitteeMember } from "@/lib/data/committees";
 function MemberCard({ member }: { member: CommitteeMember }) {
   const content = (
     <>
-      <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-secondary">
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg bg-secondary">
         {member.image ? (
           <Image
             src={member.image}
             alt={member.name}
             fill
             sizes="(min-width: 1024px) 200px, (min-width: 640px) 33vw, 50vw"
-            className="object-cover transition-transform duration-300 group-hover/member:scale-105"
+            className="object-cover object-top transition-transform duration-300 group-hover/member:scale-105"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-primary/10 font-heading text-2xl text-primary">
@@ -29,11 +29,11 @@ function MemberCard({ member }: { member: CommitteeMember }) {
           {getCountryFlag(member.affiliation)}
         </span>
       </div>
-      <div className="mt-3 flex-1">
+      <div className="mt-3 flex-1 text-center">
         <p
           className={cn(
             "line-clamp-2 min-h-[2.5rem] text-sm font-medium no-underline",
-            member.href && "group-hover/member:text-brand-accent-ink"
+            member.href && "group-hover/member:text-brand-accent-ink",
           )}
         >
           {member.name}
@@ -54,7 +54,8 @@ function MemberCard({ member }: { member: CommitteeMember }) {
 
   const className = cn(
     "group/member relative flex h-full flex-col rounded-xl border border-border bg-card p-3 no-underline transition-all",
-    member.href && "hover:-translate-y-0.5 hover:border-brand-accent/40 hover:shadow-md hover:shadow-brand-accent/15"
+    member.href &&
+      "hover:-translate-y-0.5 hover:border-brand-accent/40 hover:shadow-md hover:shadow-brand-accent/15",
   );
 
   if (member.href) {
@@ -83,16 +84,20 @@ export function CommitteeSection({ groups }: { groups: CommitteeGroup[] }) {
         return (
           <section key={group.title}>
             <Reveal>
-              <h2 className="flex items-center gap-3 font-heading text-base font-medium">
+              <h2 className="flex items-center justify-center gap-3 font-heading text-xl font-bold text-brand-accent-ink sm:text-2xl">
                 {group.title}
-                <span className="font-mono text-xs font-normal text-muted-foreground">
-                  {members.length.toString().padStart(2, "0")}
-                </span>
               </h2>
+              <div className="mx-auto mt-2 h-0.5 w-10 bg-gradient-to-r from-brand-accent-ink to-brand-accent" />
             </Reveal>
-            <RevealGroup className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4" stagger={0.05}>
+            <RevealGroup
+              className="mt-4 flex flex-wrap justify-center gap-3"
+              stagger={0.05}
+            >
               {members.map((member, index) => (
-                <RevealItem key={`${member.name}-${index}`}>
+                <RevealItem
+                  key={`${member.name}-${index}`}
+                  className="w-[calc(50%-0.375rem)] sm:w-[calc(33.333%-0.5rem)] lg:w-[calc(25%-0.5625rem)]"
+                >
                   <MemberCard member={member} />
                 </RevealItem>
               ))}

@@ -24,7 +24,7 @@ export default function CommitteesPage() {
         <CommitteeSection groups={committeeGroups} />
 
         <Reveal className="mt-8 flex items-center justify-between gap-4 rounded-xl border border-dashed border-border px-5 py-4">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-base text-muted-foreground">
             Looking for the technical area chairs?
           </p>
           <Button

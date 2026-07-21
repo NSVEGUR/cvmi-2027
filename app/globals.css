@@ -12,6 +12,8 @@
   --font-heading: var(--font-heading);
   --color-brand-accent: var(--brand-accent);
   --color-brand-accent-ink: var(--brand-accent-ink);
+  --color-brand-warm: var(--brand-warm);
+  --color-brand-warm-ink: var(--brand-warm-ink);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -56,7 +58,9 @@
  * design for an official institutional site). To retheme, only these
  * values need to change: --primary, --primary-foreground, --ring,
  * --secondary-foreground, --accent, --accent-foreground, --brand-accent,
- * --brand-accent-ink.
+ * --brand-accent-ink. --brand-warm/--brand-warm-ink is a secondary, warm
+ * complementary accent (amber) reserved for a small number of intentional
+ * highlights (e.g. the campus tour CTA) so the palette isn't all-indigo.
  */
 :root {
   --background: #faf8f3;
@@ -70,15 +74,17 @@
   --secondary: #efeae0;
   --secondary-foreground: #4338ca;
   --muted: #f1ede4;
-  --muted-foreground: #736c5e;
+  --muted-foreground: #5b5445;
   --accent: #eef2ff;
   --accent-foreground: #4338ca;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #e6e0d2;
-  --input: #e6e0d2;
+  --border: #d9d2bf;
+  --input: #d9d2bf;
   --ring: #4f46e5;
   --brand-accent: #4f46e5;
   --brand-accent-ink: #4338ca;
+  --brand-warm: #d97706;
+  --brand-warm-ink: #92400e;
   --chart-1: oklch(0.785 0.115 274.713);
   --chart-2: oklch(0.585 0.233 277.117);
   --chart-3: oklch(0.511 0.262 276.966);
@@ -108,7 +114,7 @@
   }
   html {
     @apply font-sans;
-    font-size: 17.5px;
+    font-size: 19px;
   }
 }
 

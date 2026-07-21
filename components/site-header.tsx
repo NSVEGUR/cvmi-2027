@@ -1,8 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 
-import { navItems } from "@/lib/data/nav";
+import { navItems, type NavItem } from "@/lib/data/nav";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -52,6 +56,18 @@ function NavChildLink({
 }
 
 export function SiteHeader() {
+  const pathname = usePathname();
+
+  const isItemActive = (item: NavItem) =>
+    (!!item.href && pathname === item.href) ||
+    (item.children?.some(
+      (child) => !child.external && !!child.href && pathname === child.href,
+    ) ??
+      false);
+
+  const isChildActive = (child: { href?: string; external?: boolean }) =>
+    !child.external && !!child.href && pathname === child.href;
+
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-sm relative">
       <div className="rule-gradient absolute inset-x-0 bottom-0" aria-hidden />
@@ -76,47 +92,85 @@ export function SiteHeader() {
 
         <nav className="hidden justify-center lg:flex">
           <ul className="flex items-center gap-0.5 font-sans text-sm">
-            {navItems.map((item) => (
-              <li key={item.label} className="group relative">
-                {item.href ? (
-                  <Link
-                    href={item.href}
-                    className="group/link relative flex items-center rounded-md px-3 py-2 text-foreground/80 transition-colors hover:bg-brand-accent/20 hover:text-brand-accent-ink"
-                  >
-                    {item.label}
-                    <span className="pointer-events-none absolute inset-x-3 bottom-1 h-px origin-left scale-x-0 bg-gradient-to-r from-brand-accent-ink to-brand-accent transition-transform duration-200 group-hover/link:scale-x-100" />
-                  </Link>
-                ) : (
-                  <span className="relative flex cursor-default items-center rounded-md px-3 py-2 text-foreground/80 transition-colors group-hover:bg-brand-accent/20 group-hover:text-brand-accent-ink">
-                    {item.label}
-                    <span className="pointer-events-none absolute inset-x-3 bottom-1 h-px origin-left scale-x-0 bg-gradient-to-r from-brand-accent-ink to-brand-accent transition-transform duration-200 group-hover:scale-x-100" />
-                  </span>
-                )}
-                {item.children ? (
-                  <div className="invisible absolute left-0 top-full z-50 w-64 translate-y-1 pt-2 opacity-0 transition-all duration-150 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                    <div className="rounded-lg border border-border bg-popover p-1.5 shadow-lg ring-1 ring-foreground/5">
-                      {item.children.map((child) => (
-                        <NavChildLink
-                          key={child.href ?? child.label}
-                          href={child.href}
-                          external={child.external}
-                          className="block rounded-md px-3 py-2 text-sm transition-colors hover:bg-brand-accent/20"
-                        >
-                          <span className="block font-medium text-foreground">
-                            {child.label}
-                          </span>
-                          {child.description ? (
-                            <span className="block text-xs text-muted-foreground">
-                              {child.description}
-                            </span>
-                          ) : null}
-                        </NavChildLink>
-                      ))}
+            {navItems.map((item) => {
+              const active = isItemActive(item);
+              return (
+                <li key={item.label} className="group relative">
+                  {item.href ? (
+                    <Link
+                      href={item.href}
+                      className={cn(
+                        "group/link relative flex items-center rounded-md px-3 py-2 transition-colors hover:bg-brand-accent/20 hover:text-brand-accent-ink",
+                        active
+                          ? "bg-brand-accent/10 font-medium text-brand-accent-ink"
+                          : "text-foreground/80",
+                      )}
+                    >
+                      {item.label}
+                      <span
+                        className={cn(
+                          "pointer-events-none absolute inset-x-3 bottom-1 h-px origin-left bg-gradient-to-r from-brand-accent-ink to-brand-accent transition-transform duration-200 group-hover/link:scale-x-100",
+                          active ? "scale-x-100" : "scale-x-0",
+                        )}
+                      />
+                    </Link>
+                  ) : (
+                    <span
+                      className={cn(
+                        "relative flex cursor-default items-center rounded-md px-3 py-2 transition-colors group-hover:bg-brand-accent/20 group-hover:text-brand-accent-ink",
+                        active
+                          ? "bg-brand-accent/10 font-medium text-brand-accent-ink"
+                          : "text-foreground/80",
+                      )}
+                    >
+                      {item.label}
+                      <span
+                        className={cn(
+                          "pointer-events-none absolute inset-x-3 bottom-1 h-px origin-left bg-gradient-to-r from-brand-accent-ink to-brand-accent transition-transform duration-200 group-hover:scale-x-100",
+                          active ? "scale-x-100" : "scale-x-0",
+                        )}
+                      />
+                    </span>
+                  )}
+                  {item.children ? (
+                    <div className="invisible absolute left-0 top-full z-50 w-64 translate-y-1 pt-2 opacity-0 transition-all duration-150 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                      <div className="rounded-lg border border-border bg-popover p-1.5 shadow-lg ring-1 ring-foreground/5">
+                        {item.children.map((child) => {
+                          const childActive = isChildActive(child);
+                          return (
+                            <NavChildLink
+                              key={child.href ?? child.label}
+                              href={child.href}
+                              external={child.external}
+                              className={cn(
+                                "block rounded-md px-3 py-2 text-sm transition-colors hover:bg-brand-accent/20",
+                                childActive && "bg-brand-accent/10",
+                              )}
+                            >
+                              <span
+                                className={cn(
+                                  "block font-medium",
+                                  childActive
+                                    ? "text-brand-accent-ink"
+                                    : "text-foreground",
+                                )}
+                              >
+                                {child.label}
+                              </span>
+                              {child.description ? (
+                                <span className="block text-xs text-muted-foreground">
+                                  {child.description}
+                                </span>
+                              ) : null}
+                            </NavChildLink>
+                          );
+                        })}
+                      </div>
                     </div>
-                  </div>
-                ) : null}
-              </li>
-            ))}
+                  ) : null}
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
@@ -136,14 +190,21 @@ export function SiteHeader() {
               </SheetHeader>
               <div className="flex-1 overflow-y-auto px-2 pb-4">
                 <Accordion className="flex flex-col gap-0.5">
-                  {navItems.map((item) =>
-                    item.children ? (
+                  {navItems.map((item) => {
+                    const active = isItemActive(item);
+                    return item.children ? (
                       <AccordionItem
                         key={item.label}
                         value={item.label}
                         className="border-none"
                       >
-                        <AccordionTrigger className="rounded-md px-3 py-2.5 no-underline hover:bg-brand-accent/20 hover:text-brand-accent-ink hover:no-underline">
+                        <AccordionTrigger
+                          className={cn(
+                            "rounded-md px-3 py-2.5 no-underline hover:bg-brand-accent/20 hover:text-brand-accent-ink hover:no-underline",
+                            active &&
+                              "bg-brand-accent/10 font-medium text-brand-accent-ink",
+                          )}
+                        >
                           {item.label}
                         </AccordionTrigger>
                         <AccordionContent className="pb-1 pl-3">
@@ -151,21 +212,34 @@ export function SiteHeader() {
                             {item.href ? (
                               <Link
                                 href={item.href}
-                                className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-brand-accent/20 hover:text-brand-accent-ink"
+                                className={cn(
+                                  "rounded-md px-3 py-2 text-sm hover:bg-brand-accent/20 hover:text-brand-accent-ink",
+                                  pathname === item.href
+                                    ? "font-medium text-brand-accent-ink"
+                                    : "text-muted-foreground",
+                                )}
                               >
                                 Overview
                               </Link>
                             ) : null}
-                            {item.children.map((child) => (
-                              <NavChildLink
-                                key={child.href ?? child.label}
-                                href={child.href}
-                                external={child.external}
-                                className="rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-brand-accent/20 hover:text-brand-accent-ink"
-                              >
-                                {child.label}
-                              </NavChildLink>
-                            ))}
+                            {item.children.map((child) => {
+                              const childActive = isChildActive(child);
+                              return (
+                                <NavChildLink
+                                  key={child.href ?? child.label}
+                                  href={child.href}
+                                  external={child.external}
+                                  className={cn(
+                                    "rounded-md px-3 py-2 text-sm hover:bg-brand-accent/20 hover:text-brand-accent-ink",
+                                    childActive
+                                      ? "font-medium text-brand-accent-ink"
+                                      : "text-muted-foreground",
+                                  )}
+                                >
+                                  {child.label}
+                                </NavChildLink>
+                              );
+                            })}
                           </div>
                         </AccordionContent>
                       </AccordionItem>
@@ -173,12 +247,15 @@ export function SiteHeader() {
                       <Link
                         key={item.href}
                         href={item.href}
-                        className="rounded-md px-3 py-2.5 text-sm font-medium hover:bg-brand-accent/20 hover:text-brand-accent-ink"
+                        className={cn(
+                          "rounded-md px-3 py-2.5 text-sm font-medium hover:bg-brand-accent/20 hover:text-brand-accent-ink",
+                          active && "bg-brand-accent/10 text-brand-accent-ink",
+                        )}
                       >
                         {item.label}
                       </Link>
-                    ),
-                  )}
+                    );
+                  })}
                 </Accordion>
               </div>
             </SheetContent>

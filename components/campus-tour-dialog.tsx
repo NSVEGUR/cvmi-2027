@@ -14,7 +14,13 @@ export function CampusTourDialog() {
   return (
     <Dialog>
       <DialogTrigger
-        render={<Button variant="destructive" size="lg" className="px-6" />}
+        render={
+          <Button
+            variant="outline"
+            size="lg"
+            className="border-brand-warm/40 bg-brand-warm/10 px-6 text-brand-warm-ink hover:border-brand-warm/60 hover:bg-brand-warm/20"
+          />
+        }
       >
         <MapPin />
         IIITDM Campus Tour

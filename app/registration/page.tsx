@@ -55,7 +55,7 @@ export default function RegistrationPage() {
                 >
                   <CardContent>
                     <h3 className="font-heading text-sm font-medium">{item.title}</h3>
-                    <p className="mt-1.5 text-sm text-muted-foreground">{item.body}</p>
+                    <p className="mt-1.5 text-base text-muted-foreground">{item.body}</p>
                   </CardContent>
                 </Card>
               </RevealItem>

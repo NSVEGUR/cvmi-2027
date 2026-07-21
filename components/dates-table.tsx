@@ -3,8 +3,8 @@ import type { DateTableRow } from "@/lib/data/dates";
 
 export function DatesTable({ rows }: { rows: DateTableRow[] }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-border">
-      <div className="divide-y divide-border">
+    <div className="overflow-hidden rounded-xl border border-black/50">
+      <div className="divide-y divide-black/50">
         {rows.map((row, index) => {
           const stripe = index % 2 === 1;
           if (row.type === "single") {
@@ -14,13 +14,13 @@ export function DatesTable({ rows }: { rows: DateTableRow[] }) {
                 className={cn(
                   "flex flex-wrap items-center justify-between gap-x-4 gap-y-1 px-5 py-4",
                   stripe && "bg-accent/40",
-                  row.emphasis && "bg-brand-accent/10"
+                  row.emphasis && "bg-brand-accent/10",
                 )}
               >
                 <span
                   className={cn(
                     "font-medium",
-                    row.emphasis && "font-heading text-base"
+                    row.emphasis && "font-heading text-base",
                   )}
                 >
                   {row.label}
@@ -28,7 +28,7 @@ export function DatesTable({ rows }: { rows: DateTableRow[] }) {
                 <span
                   className={cn(
                     "font-mono text-sm font-semibold text-brand-accent-ink",
-                    row.emphasis && "text-base"
+                    row.emphasis && "text-base",
                   )}
                 >
                   {row.date}
@@ -40,7 +40,10 @@ export function DatesTable({ rows }: { rows: DateTableRow[] }) {
           return (
             <div
               key={row.round}
-              className={cn("flex flex-col sm:flex-row", stripe && "bg-accent/40")}
+              className={cn(
+                "flex flex-col sm:flex-row",
+                stripe && "bg-accent/40",
+              )}
             >
               <div className="shrink-0 px-5 py-4 font-heading text-sm font-medium text-brand-accent-ink sm:w-40 sm:border-r sm:border-border">
                 {row.round}
@@ -51,7 +54,9 @@ export function DatesTable({ rows }: { rows: DateTableRow[] }) {
                     key={sub.label}
                     className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 px-5 py-3"
                   >
-                    <span className="text-sm text-foreground/90">{sub.label}</span>
+                    <span className="text-sm text-foreground/90">
+                      {sub.label}
+                    </span>
                     <span className="font-mono text-sm font-medium text-brand-accent-ink">
                       {sub.date}
                     </span>

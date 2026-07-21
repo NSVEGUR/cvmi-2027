@@ -26,11 +26,12 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
 
       <FocusFrame inset="14px" tone="muted" className="relative">
-        <div className="relative mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:py-28 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:py-24">
-          <HeroStagger className="flex flex-col items-start">
-            <HeroItem>
-              <p className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-brand-accent-ink sm:text-sm">
-                6th International Conference on
+        <div className="relative mx-auto grid max-w-6xl grid-cols-1 gap-12 px-6 py-20 sm:py-28 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:py-24">
+          <HeroStagger className="flex w-full min-w-0 flex-col items-start">
+            <HeroItem className="w-full min-w-0">
+              <p className="font-mono text-xs uppercase tracking-normal text-brand-warm-ink font-bold sm:tracking-[0.2em] sm:text-sm">
+                6<sup className="text-[0.65em]">th</sup> IEEE International
+                Conference on
               </p>
             </HeroItem>
 
@@ -48,15 +49,17 @@ export function Hero() {
               </span>
             </HeroItem>
             <HeroItem className="mt-1">
-              <p className="text-sm text-muted-foreground">{conferenceVenue}</p>
+              <p className="text-base text-black font-bold">
+                {conferenceVenue}
+              </p>
             </HeroItem>
 
             <HeroItem className="mt-6 max-w-xl">
-              <p className="text-balance text-lg text-muted-foreground">
-                CVMI 2027 brings together researchers, academicians, and
-                industry practitioners advancing the state of the art in vision
-                and intelligent systems &mdash; three days of papers, posters, a
-                PhD symposium, and keynote talks.
+              <p className="text-balance text-base text-muted-foreground">
+                An international IEEE technically sponsored conference bringing
+                together researchers, academicians, industry experts, and
+                students to share advancements in computer vision, machine
+                intelligence, and artificial intelligence.
               </p>
             </HeroItem>
 

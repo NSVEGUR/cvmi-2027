@@ -1,5 +1,11 @@
 import Link from "next/link";
-import { ArrowUpRight, BookMarked, GraduationCap, MapPin, Users } from "lucide-react";
+import {
+  ArrowUpRight,
+  BookMarked,
+  GraduationCap,
+  MapPin,
+  Users,
+} from "lucide-react";
 
 import { Hero } from "@/components/hero";
 import { SectionEyebrow } from "@/components/section-eyebrow";
@@ -7,16 +13,14 @@ import { DatesTable } from "@/components/dates-table";
 import { Countdown } from "@/components/countdown";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { conferenceDates, dateTableRows, reviewProcessNote } from "@/lib/data/dates";
+import {
+  conferenceDates,
+  dateTableRows,
+  reviewProcessNote,
+} from "@/lib/data/dates";
 import { topicGroups } from "@/lib/data/topics";
-
-const sponsorTiers = [
-  { tier: "Platinum", note: "Sponsorship tiers and confirmed partners will be announced here." },
-  { tier: "Gold", note: "Interested organizations can reach the sponsorship chairs via the contact page." },
-  { tier: "Silver", note: "Details of benefits per tier will be published alongside the call for sponsors." },
-];
+import { cn } from "@/lib/utils";
 
 const facts = [
   {
@@ -46,25 +50,7 @@ export default function Home() {
     <>
       <Hero />
 
-      <section className="border-b border-border">
-        <RevealGroup className="mx-auto grid max-w-5xl grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4 my-12 mx-6 lg:mx-auto">
-          {facts.map((fact) => (
-            <RevealItem
-              key={fact.title}
-              className="group relative bg-card px-6 py-7 transition-colors hover:bg-accent/40"
-            >
-              <span className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-gradient-to-r from-brand-accent-ink to-brand-accent transition-transform duration-300 group-hover:scale-x-100" />
-              <div className="inline-flex rounded-lg bg-primary/10 p-2.5 transition-transform duration-300 group-hover:scale-110">
-                <fact.icon className="size-5 text-brand-accent-ink" strokeWidth={1.75} />
-              </div>
-              <p className="mt-4 font-heading text-base font-medium">{fact.title}</p>
-              <p className="mt-1 text-sm text-muted-foreground">{fact.description}</p>
-            </RevealItem>
-          ))}
-        </RevealGroup>
-      </section>
-
-      <section className="mx-auto max-w-5xl px-6 py-20">
+      <section className="mx-auto max-w-5xl px-6  py-10">
         <Reveal>
           <div className="grid gap-10 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-accent/60 via-accent/15 to-transparent p-8 shadow-sm sm:grid-cols-2 sm:p-12">
             <div className="flex flex-col items-center text-center sm:border-r sm:border-border/70 sm:pr-10">
@@ -72,16 +58,15 @@ export default function Home() {
                 About CVMI 2027
               </h2>
               <div className="mt-3 h-0.5 w-14 bg-gradient-to-r from-brand-accent-ink to-brand-accent" />
-              <p className="mt-4 text-sm text-muted-foreground">
-                In today&apos;s fast-moving world, AI and ML models are
-                everywhere. CVMI brings researchers, academicians, and
-                industry experts together each year to discuss advances in
-                computer vision, image processing, and machine intelligence.
-                The 6th edition is organized by the Department of Computer
-                Science and Engineering at IIITDM Kancheepuram &mdash; the
-                conference&apos;s first edition in South India, featuring
-                regular paper and poster presentations, a PhD Symposium, and
-                keynote talks.
+              <p className="mt-4 text-base text-muted-foreground">
+                In today’s fast-moving world, Artificial Intelligence (AI) and
+                Machine Learning (ML) models and systems are everywhere.
+                Computer Vision, Image Processing, and Machine Intelligence are
+                witnessing rapid advancements that have helped industry and
+                society. The 6th International Conference on Computer Vision &
+                Machine Intelligence (CVMI-2027) will be organized by the
+                Department of Computer Science and Engineering at IIITDM
+                Kancheepuram from June 17-19, 2027.
               </p>
             </div>
             <div className="flex flex-col items-center text-center sm:pl-10">
@@ -89,10 +74,11 @@ export default function Home() {
                 Venue
               </h2>
               <div className="mt-3 h-0.5 w-8 bg-gradient-to-r from-brand-accent-ink to-brand-accent" />
-              <p className="mt-4 text-sm font-medium text-foreground">
-                IIITDM Kancheepuram, <span className="text-brand-accent-ink">Chennai</span>
+              <p className="mt-4 text-base font-medium text-foreground">
+                IIITDM Kancheepuram,{" "}
+                <span className="text-brand-accent-ink">Chennai</span>
               </p>
-              <p className="text-xs text-muted-foreground">600127, India</p>
+              <p className="text-sm text-muted-foreground">600127, India</p>
               <p className="mt-2 font-mono text-sm font-semibold text-brand-accent-ink">
                 {conferenceDates}
               </p>
@@ -107,32 +93,85 @@ export default function Home() {
         </Reveal>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-20">
+      <section className="border-b border-border bg-secondary/20  py-20">
+        <div className="mx-auto max-w-5xl px-6 py-16">
+          <Reveal>
+            <h2 className="font-heading text-2xl font-semibold tracking-tight text-brand-accent-ink sm:text-3xl">
+              CVMI 2027 Attractions
+            </h2>
+          </Reveal>
+          <RevealGroup
+            className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4"
+            stagger={0.06}
+          >
+            {facts.map((fact) => (
+              <RevealItem
+                key={fact.title}
+                className="flex flex-col items-center gap-3 bg-card px-6 py-8 text-center transition-colors hover:bg-brand-accent/5"
+              >
+                <div className="flex size-14 items-center justify-center rounded-xl border-2 border-brand-accent-ink/60 text-brand-accent-ink">
+                  <fact.icon className="size-6" strokeWidth={1.75} />
+                </div>
+                <p className="font-heading text-sm font-bold text-brand-accent-ink">
+                  {fact.title}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {fact.description}
+                </p>
+              </RevealItem>
+            ))}
+          </RevealGroup>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-6 py-10">
         <Reveal>
           <SectionEyebrow>Scope</SectionEyebrow>
           <h2 className="mt-3 font-heading text-2xl font-medium tracking-tight sm:text-3xl">
             Conference tracks
           </h2>
         </Reveal>
-        <RevealGroup className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" stagger={0.06}>
-          {topicGroups.map((group) => (
-            <RevealItem key={group.title}>
+        <RevealGroup
+          className="mt-6 grid items-stretch gap-4 sm:grid-cols-2"
+          stagger={0.06}
+        >
+          {topicGroups.map((group, index) => (
+            <RevealItem key={group.title} className="h-full">
               <Card
                 size="sm"
-                className="border-border transition-all hover:-translate-y-0.5 hover:border-brand-accent/40 hover:shadow-md hover:shadow-brand-accent/10"
+                className={cn(
+                  "h-full border-border bg-gradient-to-br transition-all hover:-translate-y-0.5 hover:border-brand-accent/40 hover:shadow-md hover:shadow-brand-accent/10",
+                  index % 2 === 0
+                    ? "from-accent/60 via-accent/10 to-transparent"
+                    : "from-brand-warm/15 via-brand-warm/5 to-transparent",
+                )}
               >
-                <CardContent>
-                  <p className="font-heading text-sm font-medium">{group.title}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    {group.topics.length} topics
+                <CardContent className="flex h-full flex-col">
+                  <p className="font-heading text-sm font-bold text-brand-accent-ink">
+                    {group.title}
                   </p>
+                  <ul className="mt-3 flex flex-1 flex-col gap-1.5 text-sm text-muted-foreground">
+                    {group.topics.map((topic) => (
+                      <li key={topic} className="flex gap-2">
+                        <span aria-hidden className="text-brand-accent-ink">
+                          &middot;
+                        </span>
+                        {topic}
+                      </li>
+                    ))}
+                  </ul>
                 </CardContent>
               </Card>
             </RevealItem>
           ))}
         </RevealGroup>
         <Reveal delay={0.1}>
-          <Button render={<Link href="/call-for-papers" />} nativeButton={false} variant="outline" className="mt-6">
+          <Button
+            render={<Link href="/call-for-papers" />}
+            nativeButton={false}
+            variant="outline"
+            className="mt-6"
+          >
             View all topics &amp; submission guidelines
             <ArrowUpRight />
           </Button>
@@ -148,56 +187,27 @@ export default function Home() {
               <h2 className="mt-3 font-heading text-2xl font-medium tracking-tight sm:text-3xl">
                 Important dates
               </h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Tentative &mdash; subject to confirmation as the program is finalized.
+              <p className="mt-2 text-base text-muted-foreground">
+                Tentative and subject to confirmation as the program is
+                finalized.
               </p>
             </div>
-            <Button render={<Link href="/important-dates" />} nativeButton={false} variant="outline">
+            <Button
+              render={<Link href="/important-dates" />}
+              nativeButton={false}
+              variant="outline"
+            >
               Full schedule
               <ArrowUpRight />
             </Button>
           </Reveal>
-          <Reveal delay={0.1} className="mt-10">
+          <Reveal delay={0.1} className="mx-auto mt-10 max-w-2xl">
             <DatesTable rows={dateTableRows} />
-            <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
               {reviewProcessNote}
             </p>
           </Reveal>
         </div>
-      </section>
-
-      <section id="sponsors" className="mx-auto max-w-5xl scroll-mt-24 px-6 py-20">
-        <Reveal>
-          <SectionEyebrow>Sponsors</SectionEyebrow>
-          <h2 className="mt-3 font-heading text-2xl font-medium tracking-tight sm:text-3xl">
-            Partnering with CVMI 2027
-          </h2>
-          <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-            Sponsorship packages are being finalized. Organizations interested in
-            supporting the conference can reach out via the contact page.
-          </p>
-        </Reveal>
-        <RevealGroup className="mt-8 grid gap-4 sm:grid-cols-3" stagger={0.08}>
-          {sponsorTiers.map((sponsor) => (
-            <RevealItem key={sponsor.tier}>
-              <Card className="border-dashed border-border/80 transition-all hover:-translate-y-0.5 hover:border-brand-accent/30">
-                <CardContent>
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="font-heading text-sm font-medium">{sponsor.tier}</p>
-                    <Badge variant="outline" className="shrink-0 font-mono text-[10px]">
-                      TBA
-                    </Badge>
-                  </div>
-                  <p className="mt-2 text-xs text-muted-foreground">{sponsor.note}</p>
-                </CardContent>
-              </Card>
-            </RevealItem>
-          ))}
-        </RevealGroup>
-        <Button render={<Link href="/contact" />} nativeButton={false} variant="outline" className="mt-6">
-          Contact the sponsorship chairs
-          <ArrowUpRight />
-        </Button>
       </section>
     </>
   );

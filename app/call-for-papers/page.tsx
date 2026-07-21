@@ -5,6 +5,7 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { Card, CardContent } from "@/components/ui/card";
 import { topicGroups } from "@/lib/data/topics";
 import type { Metadata } from "next";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Call for Papers | CVMI 2027",
@@ -45,13 +46,26 @@ export default function CallForPapersPage() {
             Topics of interest
           </h2>
         </Reveal>
-        <RevealGroup className="mt-8 grid gap-4 sm:grid-cols-2" stagger={0.07}>
-          {topicGroups.map((group) => (
-            <RevealItem key={group.title}>
-              <Card className="border-border transition-all hover:-translate-y-0.5 hover:border-brand-accent/30 hover:shadow-md hover:shadow-brand-accent/10">
-                <CardContent>
-                  <p className="font-heading text-sm font-medium">{group.title}</p>
-                  <ul className="mt-3 flex flex-col gap-1.5 text-sm text-muted-foreground">
+        <RevealGroup
+          className="mt-6 grid items-stretch gap-4 sm:grid-cols-2"
+          stagger={0.06}
+        >
+          {topicGroups.map((group, index) => (
+            <RevealItem key={group.title} className="h-full">
+              <Card
+                size="sm"
+                className={cn(
+                  "h-full border-border bg-gradient-to-br transition-all hover:-translate-y-0.5 hover:border-brand-accent/40 hover:shadow-md hover:shadow-brand-accent/10",
+                  index % 2 === 0
+                    ? "from-accent/60 via-accent/10 to-transparent"
+                    : "from-brand-warm/15 via-brand-warm/5 to-transparent",
+                )}
+              >
+                <CardContent className="flex h-full flex-col">
+                  <p className="font-heading text-sm font-bold text-brand-accent-ink">
+                    {group.title}
+                  </p>
+                  <ul className="mt-3 flex flex-1 flex-col gap-1.5 text-sm text-muted-foreground">
                     {group.topics.map((topic) => (
                       <li key={topic} className="flex gap-2">
                         <span aria-hidden className="text-brand-accent-ink">
@@ -76,11 +90,18 @@ export default function CallForPapersPage() {
               Submission guidelines
             </h2>
           </Reveal>
-          <RevealGroup className="mt-8 grid gap-6 sm:grid-cols-2" stagger={0.06}>
+          <RevealGroup
+            className="mt-8 grid gap-6 sm:grid-cols-2"
+            stagger={0.06}
+          >
             {guidelines.map((item) => (
               <RevealItem key={item.title}>
-                <h3 className="font-heading text-sm font-medium">{item.title}</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground">{item.body}</p>
+                <h3 className="font-heading text-sm font-medium">
+                  {item.title}
+                </h3>
+                <p className="mt-1.5 text-base text-muted-foreground">
+                  {item.body}
+                </p>
               </RevealItem>
             ))}
           </RevealGroup>
@@ -91,8 +112,8 @@ export default function CallForPapersPage() {
                 Submission portal
               </p>
               <p className="mt-1.5 text-sm">
-                The paper submission system link will be published here once
-                the portal opens on the Call for Papers date.
+                The paper submission system link will be published here once the
+                portal opens on the Call for Papers date.
               </p>
             </FocusFrame>
           </Reveal>

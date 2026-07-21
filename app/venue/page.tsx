@@ -26,7 +26,7 @@ export default function VenuePage() {
             <h2 className="mt-3 font-heading text-2xl font-medium tracking-tight">
               IIITDM Kancheepuram
             </h2>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{fullAddress}</p>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">{fullAddress}</p>
 
             <address className="mt-6 rounded-lg border border-border bg-secondary/30 p-4 text-sm not-italic">
               {fullAddress}

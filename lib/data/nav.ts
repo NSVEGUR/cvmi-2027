@@ -68,22 +68,6 @@ export const navItems: NavItem[] = [
   },
   { label: "Venue & Travel", href: "/venue" },
   {
-    label: "Sponsors",
-    href: "/#sponsors",
-    children: [
-      {
-        label: "Sponsor Tiers",
-        href: "/#sponsors",
-        description: "Current sponsors & tiers",
-      },
-      {
-        label: "Call for Sponsors",
-        href: "/call-for-sponsors",
-        description: "Why partner with CVMI 2027",
-      },
-    ],
-  },
-  {
     label: "History",
     href: "",
     children: [

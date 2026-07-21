@@ -24,7 +24,7 @@ export default function AreaChairsPage() {
         <CommitteeSection groups={[areaChairsGroup]} />
 
         <Reveal className="mt-8 flex items-center justify-between gap-4 rounded-xl border border-dashed border-border px-5 py-4">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-base text-muted-foreground">
             Looking for patrons, chairs, and the organizing team?
           </p>
           <Button render={<Link href="/committees" />} nativeButton={false} variant="outline">
