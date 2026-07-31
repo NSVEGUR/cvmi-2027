@@ -18,7 +18,12 @@ export function PageHeader({
   className?: string;
 }) {
   return (
-    <header className={cn("relative overflow-hidden border-b border-border", className)}>
+    <header
+      className={cn(
+        "relative overflow-hidden border-b border-border",
+        className,
+      )}
+    >
       <motion.div
         className="absolute inset-0"
         initial={{ scale: 1.08 }}
@@ -26,7 +31,7 @@ export function PageHeader({
         transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] as const }}
       >
         <Image
-          src="/images/campus-header.webp"
+          src="/images/poster.jpeg"
           alt=""
           fill
           priority
@@ -42,7 +47,11 @@ export function PageHeader({
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] as const }}
+          transition={{
+            duration: 0.6,
+            delay: 0.15,
+            ease: [0.16, 1, 0.3, 1] as const,
+          }}
         >
           <SectionEyebrow className="text-white/70">{eyebrow}</SectionEyebrow>
           <h1 className="mt-3 max-w-3xl font-heading text-3xl font-medium tracking-tight text-white sm:text-4xl md:text-5xl">

@@ -3,6 +3,7 @@ export type NavLink = {
   href?: string;
   description?: string;
   external?: boolean;
+  children?: NavLink[];
 };
 
 export type NavItem = Omit<NavLink, "href"> & {
@@ -24,6 +25,20 @@ export const navItems: NavItem[] = [
         label: "Area Chairs",
         href: "/committees/area-chairs",
         description: "Technical area chairs",
+      },
+      {
+        label: "Advisory Committee",
+        description: "National & international advisory members",
+        children: [
+          {
+            label: "National Advisory Committee",
+            href: "/committees/advisory-committee/national",
+          },
+          {
+            label: "International Advisory Committee",
+            href: "/committees/advisory-committee/international",
+          },
+        ],
       },
     ],
   },
@@ -77,10 +92,30 @@ export const navItems: NavItem[] = [
         description: "COEP Technological University, Pune",
         external: true,
       },
-      { label: "CVMI 2025", description: "NIT Rourkela" },
-      { label: "CVMI 2024", description: "IIIT Allahabad" },
-      { label: "CVMI 2023", description: "ABV-IIITM Gwalior" },
-      { label: "CVMI 2022", description: "IIIT Allahabad" },
+      {
+        label: "CVMI 2025",
+        href: "https://cvmi2025.nitrkl.ac.in/",
+        description: "NIT Rourkela",
+        external: true,
+      },
+      {
+        label: "CVMI 2024",
+        href: "https://cvmi2024.iiita.ac.in/",
+        description: "IIIT Allahabad",
+        external: true,
+      },
+      {
+        label: "CVMI 2023",
+        href: "https://cvmi2023.iiitm.ac.in/",
+        description: "ABV-IIITM Gwalior",
+        external: true,
+      },
+      {
+        label: "CVMI 2022",
+        href: "https://cvmi.iiita.ac.in/",
+        description: "IIIT Allahabad",
+        external: true,
+      },
     ],
   },
 ];

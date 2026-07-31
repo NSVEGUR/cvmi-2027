@@ -52,13 +52,21 @@ export default function Home() {
 
       <section className="mx-auto max-w-5xl px-6  py-10">
         <Reveal>
-          <div className="grid gap-10 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-accent/60 via-accent/15 to-transparent p-8 shadow-sm sm:grid-cols-2 sm:p-12">
-            <div className="flex flex-col items-center text-center sm:border-r sm:border-border/70 sm:pr-10">
+          <div className="relative grid gap-10 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-accent/70 via-accent/20 to-transparent p-8 shadow-md shadow-brand-accent/5 ring-1 ring-brand-accent/10 sm:grid-cols-2 sm:p-12">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -right-16 -top-20 size-64 rounded-full bg-brand-accent/20 blur-3xl"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -bottom-24 -left-10 size-56 rounded-full bg-brand-accent/10 blur-3xl"
+            />
+            <div className="relative flex flex-col items-center text-center sm:border-r sm:border-border/70 sm:pr-10">
               <h2 className="font-heading text-xl font-medium tracking-tight sm:text-2xl">
                 About CVMI 2027
               </h2>
               <div className="mt-3 h-0.5 w-14 bg-gradient-to-r from-brand-accent-ink to-brand-accent" />
-              <p className="mt-4 text-base text-muted-foreground">
+              <p className="mt-4 text-justify text-base text-muted-foreground">
                 In today’s fast-moving world, Artificial Intelligence (AI) and
                 Machine Learning (ML) models and systems are everywhere.
                 Computer Vision, Image Processing, and Machine Intelligence are
@@ -69,7 +77,7 @@ export default function Home() {
                 Kancheepuram from June 17-19, 2027.
               </p>
             </div>
-            <div className="flex flex-col items-center text-center sm:pl-10">
+            <div className="relative flex flex-col items-center text-center sm:pl-10">
               <h2 className="font-heading text-xl font-medium tracking-tight sm:text-2xl">
                 Venue
               </h2>
@@ -107,9 +115,9 @@ export default function Home() {
             {facts.map((fact) => (
               <RevealItem
                 key={fact.title}
-                className="flex flex-col items-center gap-3 bg-card px-6 py-8 text-center transition-colors hover:bg-brand-accent/5"
+                className="group/fact relative flex flex-col items-center gap-3 bg-card px-6 py-10 text-center transition-all duration-300 hover:z-10 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-accent/10"
               >
-                <div className="flex size-14 items-center justify-center rounded-xl border-2 border-brand-accent-ink/60 text-brand-accent-ink">
+                <div className="flex size-14 items-center justify-center rounded-2xl bg-brand-accent/10 text-brand-accent-ink ring-1 ring-brand-accent/20 transition-all duration-300 group-hover/fact:scale-110 group-hover/fact:bg-brand-accent group-hover/fact:text-white group-hover/fact:shadow-md group-hover/fact:shadow-brand-accent/30 group-hover/fact:ring-brand-accent">
                   <fact.icon className="size-6" strokeWidth={1.75} />
                 </div>
                 <p className="font-heading text-sm font-bold text-brand-accent-ink">
@@ -140,12 +148,21 @@ export default function Home() {
               <Card
                 size="sm"
                 className={cn(
-                  "h-full border-border bg-gradient-to-br transition-all hover:-translate-y-0.5 hover:border-brand-accent/40 hover:shadow-md hover:shadow-brand-accent/10",
+                  "relative h-full overflow-hidden border-border bg-gradient-to-br shadow-sm ring-1 ring-black/[0.02] transition-all hover:-translate-y-1 hover:border-brand-accent/40 hover:shadow-lg hover:shadow-brand-accent/10",
                   index % 2 === 0
-                    ? "from-accent/60 via-accent/10 to-transparent"
-                    : "from-brand-warm/15 via-brand-warm/5 to-transparent",
+                    ? "from-accent/70 via-accent/15 to-transparent"
+                    : "from-brand-warm/20 via-brand-warm/5 to-transparent",
                 )}
               >
+                <div
+                  aria-hidden
+                  className={cn(
+                    "absolute inset-x-0 top-0 h-1 bg-gradient-to-r",
+                    index % 2 === 0
+                      ? "from-brand-accent-ink to-brand-accent"
+                      : "from-brand-warm-ink to-brand-warm",
+                  )}
+                />
                 <CardContent className="flex h-full flex-col">
                   <p className="font-heading text-sm font-bold text-brand-accent-ink">
                     {group.title}

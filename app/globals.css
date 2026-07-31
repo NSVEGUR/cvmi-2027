@@ -54,13 +54,13 @@
 
 /*
  * THEME COLOR - change the conference brand color here in one shot.
- * This site is Indigo end-to-end (light theme only, no dark mode, by
- * design for an official institutional site). To retheme, only these
- * values need to change: --primary, --primary-foreground, --ring,
+ * This site uses Meta/Facebook blue end-to-end (light theme only, no dark
+ * mode, by design for an official institutional site). To retheme, only
+ * these values need to change: --primary, --primary-foreground, --ring,
  * --secondary-foreground, --accent, --accent-foreground, --brand-accent,
  * --brand-accent-ink. --brand-warm/--brand-warm-ink is a secondary, warm
  * complementary accent (amber) reserved for a small number of intentional
- * highlights (e.g. the campus tour CTA) so the palette isn't all-indigo.
+ * highlights (e.g. the campus tour CTA) so the palette isn't all-blue.
  */
 :root {
   --background: #faf8f3;
@@ -69,20 +69,20 @@
   --card-foreground: #1a1d1f;
   --popover: #ffffff;
   --popover-foreground: #1a1d1f;
-  --primary: #4f46e5;
+  --primary: #1877f2;
   --primary-foreground: #ffffff;
   --secondary: #efeae0;
-  --secondary-foreground: #4338ca;
+  --secondary-foreground: #0f5bc5;
   --muted: #f1ede4;
-  --muted-foreground: #5b5445;
-  --accent: #eef2ff;
-  --accent-foreground: #4338ca;
+  --muted-foreground: #423d30;
+  --accent: #e8f1ff;
+  --accent-foreground: #0f5bc5;
   --destructive: oklch(0.577 0.245 27.325);
   --border: #d9d2bf;
   --input: #d9d2bf;
-  --ring: #4f46e5;
-  --brand-accent: #4f46e5;
-  --brand-accent-ink: #4338ca;
+  --ring: #1877f2;
+  --brand-accent: #1877f2;
+  --brand-accent-ink: #0f5bc5;
   --brand-warm: #d97706;
   --brand-warm-ink: #92400e;
   --chart-1: oklch(0.785 0.115 274.713);
@@ -135,7 +135,7 @@
       ),
       radial-gradient(
         30rem 24rem at 100% 8%,
-        color-mix(in oklch, #a855f7, transparent 82%),
+        color-mix(in oklch, #0ea5e9, transparent 82%),
         transparent 65%
       ),
       radial-gradient(
@@ -150,7 +150,7 @@
       100deg,
       var(--brand-accent-ink) 10%,
       var(--brand-accent) 55%,
-      #a855f7 100%
+      #0ea5e9 100%
     );
     background-clip: text;
     -webkit-background-clip: text;

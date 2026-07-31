@@ -3,9 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
+import { ChevronRight, Menu } from "lucide-react";
 
-import { navItems, type NavItem } from "@/lib/data/nav";
+import { navItems, type NavItem, type NavLink as NavLinkData } from "@/lib/data/nav";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -55,18 +55,160 @@ function NavChildLink({
   );
 }
 
+function linkActive(link: NavLinkData, pathname: string): boolean {
+  if (!link.external && !!link.href && pathname === link.href) return true;
+  return link.children?.some((child) => linkActive(child, pathname)) ?? false;
+}
+
+function DesktopSubmenuChild({
+  child,
+  pathname,
+}: {
+  child: NavLinkData;
+  pathname: string;
+}) {
+  const childActive = linkActive(child, pathname);
+
+  if (child.children) {
+    return (
+      <div className="group/sub relative">
+        <div
+          className={cn(
+            "flex cursor-default items-center justify-between gap-2 rounded-md px-3 py-2 text-sm transition-colors group-hover/sub:bg-brand-accent/20",
+            childActive
+              ? "bg-brand-accent/10 text-brand-accent-ink"
+              : "text-foreground",
+          )}
+        >
+          <span>
+            <span className="block font-medium">{child.label}</span>
+            {child.description ? (
+              <span className="block text-xs text-muted-foreground">
+                {child.description}
+              </span>
+            ) : null}
+          </span>
+          <ChevronRight className="size-3.5 shrink-0 text-muted-foreground" />
+        </div>
+        <div className="invisible absolute left-full top-0 z-50 w-64 -translate-y-1 pl-2 opacity-0 transition-all duration-150 group-focus-within/sub:visible group-focus-within/sub:translate-y-0 group-focus-within/sub:opacity-100 group-hover/sub:visible group-hover/sub:translate-y-0 group-hover/sub:opacity-100">
+          <div className="rounded-lg border border-border bg-popover p-1.5 shadow-lg ring-1 ring-foreground/5">
+            {child.children.map((grandchild) => {
+              const grandchildActive = linkActive(grandchild, pathname);
+              return (
+                <NavChildLink
+                  key={grandchild.href ?? grandchild.label}
+                  href={grandchild.href}
+                  external={grandchild.external}
+                  className={cn(
+                    "block rounded-md px-3 py-2 text-sm transition-colors hover:bg-brand-accent/20",
+                    grandchildActive && "bg-brand-accent/10",
+                  )}
+                >
+                  <span
+                    className={cn(
+                      "block font-medium",
+                      grandchildActive
+                        ? "text-brand-accent-ink"
+                        : "text-foreground",
+                    )}
+                  >
+                    {grandchild.label}
+                  </span>
+                  {grandchild.description ? (
+                    <span className="block text-xs text-muted-foreground">
+                      {grandchild.description}
+                    </span>
+                  ) : null}
+                </NavChildLink>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <NavChildLink
+      href={child.href}
+      external={child.external}
+      className={cn(
+        "block rounded-md px-3 py-2 text-sm transition-colors hover:bg-brand-accent/20",
+        childActive && "bg-brand-accent/10",
+      )}
+    >
+      <span
+        className={cn(
+          "block font-medium",
+          childActive ? "text-brand-accent-ink" : "text-foreground",
+        )}
+      >
+        {child.label}
+      </span>
+      {child.description ? (
+        <span className="block text-xs text-muted-foreground">
+          {child.description}
+        </span>
+      ) : null}
+    </NavChildLink>
+  );
+}
+
+function MobileSubmenuChild({
+  child,
+  pathname,
+}: {
+  child: NavLinkData;
+  pathname: string;
+}) {
+  const childActive = linkActive(child, pathname);
+
+  if (child.children) {
+    return (
+      <Accordion className="flex flex-col gap-0.5">
+        <AccordionItem value={child.label} className="border-none">
+          <AccordionTrigger
+            className={cn(
+              "rounded-md px-3 py-2 text-sm no-underline hover:bg-brand-accent/20 hover:text-brand-accent-ink hover:no-underline",
+              childActive && "font-medium text-brand-accent-ink",
+            )}
+          >
+            {child.label}
+          </AccordionTrigger>
+          <AccordionContent className="pb-1 pl-3">
+            <div className="flex flex-col gap-0.5">
+              {child.children.map((grandchild) => (
+                <MobileSubmenuChild
+                  key={grandchild.href ?? grandchild.label}
+                  child={grandchild}
+                  pathname={pathname}
+                />
+              ))}
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    );
+  }
+
+  return (
+    <NavChildLink
+      href={child.href}
+      external={child.external}
+      className={cn(
+        "rounded-md px-3 py-2 text-sm hover:bg-brand-accent/20 hover:text-brand-accent-ink",
+        childActive ? "font-medium text-brand-accent-ink" : "text-muted-foreground",
+      )}
+    >
+      {child.label}
+    </NavChildLink>
+  );
+}
+
 export function SiteHeader() {
   const pathname = usePathname();
 
-  const isItemActive = (item: NavItem) =>
-    (!!item.href && pathname === item.href) ||
-    (item.children?.some(
-      (child) => !child.external && !!child.href && pathname === child.href,
-    ) ??
-      false);
-
-  const isChildActive = (child: { href?: string; external?: boolean }) =>
-    !child.external && !!child.href && pathname === child.href;
+  const isItemActive = (item: NavItem) => linkActive(item, pathname);
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-sm relative">
@@ -135,36 +277,13 @@ export function SiteHeader() {
                   {item.children ? (
                     <div className="invisible absolute left-0 top-full z-50 w-64 translate-y-1 pt-2 opacity-0 transition-all duration-150 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
                       <div className="rounded-lg border border-border bg-popover p-1.5 shadow-lg ring-1 ring-foreground/5">
-                        {item.children.map((child) => {
-                          const childActive = isChildActive(child);
-                          return (
-                            <NavChildLink
-                              key={child.href ?? child.label}
-                              href={child.href}
-                              external={child.external}
-                              className={cn(
-                                "block rounded-md px-3 py-2 text-sm transition-colors hover:bg-brand-accent/20",
-                                childActive && "bg-brand-accent/10",
-                              )}
-                            >
-                              <span
-                                className={cn(
-                                  "block font-medium",
-                                  childActive
-                                    ? "text-brand-accent-ink"
-                                    : "text-foreground",
-                                )}
-                              >
-                                {child.label}
-                              </span>
-                              {child.description ? (
-                                <span className="block text-xs text-muted-foreground">
-                                  {child.description}
-                                </span>
-                              ) : null}
-                            </NavChildLink>
-                          );
-                        })}
+                        {item.children.map((child) => (
+                          <DesktopSubmenuChild
+                            key={child.href ?? child.label}
+                            child={child}
+                            pathname={pathname}
+                          />
+                        ))}
                       </div>
                     </div>
                   ) : null}
@@ -222,24 +341,13 @@ export function SiteHeader() {
                                 Overview
                               </Link>
                             ) : null}
-                            {item.children.map((child) => {
-                              const childActive = isChildActive(child);
-                              return (
-                                <NavChildLink
-                                  key={child.href ?? child.label}
-                                  href={child.href}
-                                  external={child.external}
-                                  className={cn(
-                                    "rounded-md px-3 py-2 text-sm hover:bg-brand-accent/20 hover:text-brand-accent-ink",
-                                    childActive
-                                      ? "font-medium text-brand-accent-ink"
-                                      : "text-muted-foreground",
-                                  )}
-                                >
-                                  {child.label}
-                                </NavChildLink>
-                              );
-                            })}
+                            {item.children.map((child) => (
+                              <MobileSubmenuChild
+                                key={child.href ?? child.label}
+                                child={child}
+                                pathname={pathname}
+                              />
+                            ))}
                           </div>
                         </AccordionContent>
                       </AccordionItem>

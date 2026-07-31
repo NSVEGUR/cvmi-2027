@@ -1,14 +1,13 @@
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
 
-import { cn, getCountryFlag, getInitials } from "@/lib/utils";
+import { cn, getInitials } from "@/lib/utils";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 import type { CommitteeGroup, CommitteeMember } from "@/lib/data/committees";
 
 function MemberCard({ member }: { member: CommitteeMember }) {
   const content = (
     <>
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg bg-secondary">
+      <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-secondary">
         {member.image ? (
           <Image
             src={member.image}
@@ -22,33 +21,23 @@ function MemberCard({ member }: { member: CommitteeMember }) {
             {getInitials(member.name)}
           </div>
         )}
-        <span
-          aria-hidden
-          className="absolute right-2 top-2 flex size-6 items-center justify-center rounded-full bg-background/90 text-sm shadow-xs ring-1 ring-border"
-        >
-          {getCountryFlag(member.affiliation)}
-        </span>
       </div>
       <div className="mt-3 flex-1 text-center">
         <p
           className={cn(
-            "line-clamp-2 min-h-[2.5rem] text-sm font-medium no-underline",
+            "line-clamp-2 min-h-[2.5rem] text-sm font-bold no-underline",
             member.href && "group-hover/member:text-brand-accent-ink",
           )}
         >
           {member.name}
         </p>
+        <div className="mx-auto mt-1.5 h-1 w-10 rounded-full bg-gradient-to-r from-brand-accent-ink to-brand-accent" />
         {member.affiliation ? (
-          <p className="mt-0.5 line-clamp-2 min-h-[2rem] text-xs text-muted-foreground no-underline">
+          <p className="mt-2 line-clamp-2 min-h-[2rem] text-xs text-muted-foreground no-underline">
             {member.affiliation}
           </p>
         ) : null}
       </div>
-      {member.href ? (
-        <span className="absolute bottom-2.5 right-2.5 flex size-6 items-center justify-center rounded-full bg-background text-muted-foreground/60 shadow-xs ring-1 ring-border transition-colors group-hover/member:text-brand-accent-ink group-hover/member:ring-brand-accent/40">
-          <ArrowUpRight className="size-3.5" />
-        </span>
-      ) : null}
     </>
   );
 

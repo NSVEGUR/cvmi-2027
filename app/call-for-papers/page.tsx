@@ -55,12 +55,21 @@ export default function CallForPapersPage() {
               <Card
                 size="sm"
                 className={cn(
-                  "h-full border-border bg-gradient-to-br transition-all hover:-translate-y-0.5 hover:border-brand-accent/40 hover:shadow-md hover:shadow-brand-accent/10",
+                  "relative h-full overflow-hidden border-border bg-gradient-to-br shadow-sm ring-1 ring-black/[0.02] transition-all hover:-translate-y-1 hover:border-brand-accent/40 hover:shadow-lg hover:shadow-brand-accent/10",
                   index % 2 === 0
-                    ? "from-accent/60 via-accent/10 to-transparent"
-                    : "from-brand-warm/15 via-brand-warm/5 to-transparent",
+                    ? "from-accent/70 via-accent/15 to-transparent"
+                    : "from-brand-warm/20 via-brand-warm/5 to-transparent",
                 )}
               >
+                <div
+                  aria-hidden
+                  className={cn(
+                    "absolute inset-x-0 top-0 h-1 bg-gradient-to-r",
+                    index % 2 === 0
+                      ? "from-brand-accent-ink to-brand-accent"
+                      : "from-brand-warm-ink to-brand-warm",
+                  )}
+                />
                 <CardContent className="flex h-full flex-col">
                   <p className="font-heading text-sm font-bold text-brand-accent-ink">
                     {group.title}
