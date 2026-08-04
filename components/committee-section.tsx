@@ -14,7 +14,7 @@ function MemberCard({ member }: { member: CommitteeMember }) {
             alt={member.name}
             fill
             sizes="(min-width: 1024px) 200px, (min-width: 640px) 33vw, 50vw"
-            className="object-cover object-top transition-transform duration-300 group-hover/member:scale-105"
+            className="object-contain transition-transform duration-300 group-hover/member:scale-105"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-primary/10 font-heading text-2xl text-primary">

@@ -106,7 +106,7 @@ export const navItems: NavItem[] = [
       },
       {
         label: "CVMI 2023",
-        href: "https://cvmi2023.iiitm.ac.in/",
+        href: "https://cvmi2023.vercel.app/",
         description: "ABV-IIITM Gwalior",
         external: true,
       },

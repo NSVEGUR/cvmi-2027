@@ -52,7 +52,7 @@ export default function Home() {
 
       <section className="mx-auto max-w-5xl px-6  py-10">
         <Reveal>
-          <div className="relative grid gap-10 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-accent/70 via-accent/20 to-transparent p-8 shadow-md shadow-brand-accent/5 ring-1 ring-brand-accent/10 sm:grid-cols-2 sm:p-12">
+          <div className="relative grid grid-cols-1 gap-10 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-accent/70 via-accent/20 to-transparent p-8 shadow-md shadow-brand-accent/5 ring-1 ring-brand-accent/10 sm:grid-cols-2 sm:p-12">
             <div
               aria-hidden
               className="pointer-events-none absolute -right-16 -top-20 size-64 rounded-full bg-brand-accent/20 blur-3xl"
@@ -61,7 +61,7 @@ export default function Home() {
               aria-hidden
               className="pointer-events-none absolute -bottom-24 -left-10 size-56 rounded-full bg-brand-accent/10 blur-3xl"
             />
-            <div className="relative flex flex-col items-center text-center sm:border-r sm:border-border/70 sm:pr-10">
+            <div className="relative min-w-0 flex flex-col items-center text-center sm:border-r sm:border-border/70 sm:pr-10">
               <h2 className="font-heading text-xl font-medium tracking-tight sm:text-2xl">
                 About CVMI 2027
               </h2>
@@ -77,7 +77,7 @@ export default function Home() {
                 Kancheepuram from June 17-19, 2027.
               </p>
             </div>
-            <div className="relative flex flex-col items-center text-center sm:pl-10">
+            <div className="relative min-w-0 flex flex-col items-center text-center sm:pl-10">
               <h2 className="font-heading text-xl font-medium tracking-tight sm:text-2xl">
                 Venue
               </h2>

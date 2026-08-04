@@ -32,11 +32,11 @@ export function Countdown({ className }: { className?: string }) {
 
   return (
     <div className={className}>
-      <div className="flex items-center gap-2 sm:gap-3">
+      <div className="flex items-center justify-center gap-2 sm:gap-3">
         {units.map((unit) => (
           <div
             key={unit.key}
-            className="flex w-14 flex-col items-center rounded-lg border border-border bg-card/80 py-2 shadow-xs sm:w-16"
+            className="flex w-12 flex-col items-center rounded-lg border border-border bg-card/80 py-2 shadow-xs sm:w-16"
           >
             <span className="font-mono text-xl font-medium tabular-nums text-brand-accent-ink sm:text-2xl">
               {remaining ? remaining[unit.key].toString().padStart(2, "0") : "--"}
