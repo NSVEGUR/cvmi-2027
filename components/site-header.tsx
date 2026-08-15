@@ -214,15 +214,15 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-sm relative">
       <div className="rule-gradient absolute inset-x-0 bottom-0" aria-hidden />
       <div className="mx-auto grid h-24 max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-4 px-4 sm:px-6">
-        <Link href="/" className="flex shrink-0 items-center gap-3">
+        <Link href="/" className="flex shrink-0 items-center gap-2 sm:gap-3">
           <Image
             src="/images/iiitdm-logo.webp"
             alt="IIITDM Kancheepuram"
             width={56}
             height={56}
-            className="shrink-0"
+            className="h-10 w-10 shrink-0 sm:h-14 sm:w-14"
           />
-          <span className="flex flex-col leading-none">
+          <span className="hidden flex-col leading-none sm:flex">
             <span className="font-heading text-2xl font-bold tracking-tight text-brand-accent-ink sm:text-3xl">
               CVMI
             </span>
@@ -230,6 +230,13 @@ export function SiteHeader() {
               2027
             </span>
           </span>
+          <Image
+            src="/images/cvmi-logo.jpg"
+            alt="CVMI 2027"
+            width={112}
+            height={34}
+            className="h-[26px] w-[85px] shrink-0 rounded-sm sm:h-[34px] sm:w-[112px]"
+          />
         </Link>
 
         <nav className="hidden justify-center lg:flex">

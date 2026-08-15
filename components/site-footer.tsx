@@ -19,20 +19,19 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-secondary/30">
       <div className="mx-auto flex max-w-7xl flex-wrap items-start justify-center gap-16 px-6 py-14 md:justify-between">
-        <div className="text-center md:text-right">
-          <div className="flex flex-col items-center gap-2 md:flex-row-reverse md:items-center">
-            <Image src="/images/iiitdm-logo.webp" alt="IIITDM Kancheepuram" width={56} height={56} />
-            <div>
-              <p className="font-heading text-2xl font-bold text-brand-accent-ink">IIITDM</p>
-              <p className="text-sm text-muted-foreground">
-                Kancheepuram, <span className="font-semibold text-foreground">Chennai</span>
-              </p>
-            </div>
-          </div>
-          <div className="mt-3 text-sm text-muted-foreground">
-            <p>Off Vandalur-Kelambakkam Road</p>
-            <p>Chennai&nbsp;600127</p>
-          </div>
+        <div className="text-center md:text-left">
+          <Image
+            src="/images/cvmi-logo.jpg"
+            alt="CVMI 2027"
+            width={140}
+            height={43}
+            className="mx-auto rounded-md md:mx-0"
+          />
+          <p className="mt-2 text-sm text-muted-foreground">
+            6th International Conference on
+            <br />
+            Computer Vision and Machine Intelligence
+          </p>
         </div>
 
         <div className="flex flex-wrap justify-center gap-16 text-center md:text-left">
@@ -67,6 +66,22 @@ export function SiteFooter() {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+
+        <div className="text-center md:text-right">
+          <div className="flex flex-col items-center gap-2 md:flex-row-reverse md:items-center">
+            <Image src="/images/iiitdm-logo.webp" alt="IIITDM Kancheepuram" width={56} height={56} />
+            <div>
+              <p className="font-heading text-2xl font-bold text-brand-accent-ink">IIITDM</p>
+              <p className="text-sm text-muted-foreground">
+                Kancheepuram, <span className="font-semibold text-foreground">Chennai</span>
+              </p>
+            </div>
+          </div>
+          <div className="mt-3 text-sm text-muted-foreground">
+            <p>Off Vandalur-Kelambakkam Road</p>
+            <p>Chennai&nbsp;600127</p>
           </div>
         </div>
       </div>

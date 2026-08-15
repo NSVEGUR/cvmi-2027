@@ -3,7 +3,7 @@ export type DateTableRow =
   | { type: "round"; round: string; rows: { label: string; date: string }[] };
 
 export const dateTableRows: DateTableRow[] = [
-  { type: "single", label: "Call for Papers Opens", date: "August 15, 2026" },
+  { type: "single", label: "Call for Papers Opens", date: "August 20, 2026" },
   {
     type: "round",
     round: "First Round",
@@ -20,10 +20,23 @@ export const dateTableRows: DateTableRow[] = [
       { label: "Notification of Paper Acceptance", date: "April 15, 2027" },
     ],
   },
-  { type: "single", label: "Camera-Ready Submission Deadline", date: "June 1, 2027" },
-  { type: "single", label: "Early Bird Registration Deadline", date: "May 10, 2027" },
+  {
+    type: "single",
+    label: "Camera-Ready Submission Deadline",
+    date: "June 1, 2027",
+  },
+  {
+    type: "single",
+    label: "Early Bird Registration Deadline",
+    date: "May 10, 2027",
+  },
   { type: "single", label: "Late Registration Deadline", date: "May 25, 2027" },
-  { type: "single", label: "Conference Dates", date: "June 17–19, 2027", emphasis: true },
+  {
+    type: "single",
+    label: "Conference Dates",
+    date: "June 17–19, 2027",
+    emphasis: true,
+  },
 ];
 
 export const reviewProcessNote =
