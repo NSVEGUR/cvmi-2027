@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 8009",
     "lint": "eslint",
     "pm2:start": "pm2 start \"pnpm start\" --name \"cvmi-2027\"",
     "pm2:restart": "pm2 restart cvmi-2027",
