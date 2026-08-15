@@ -30,7 +30,7 @@ export function Hero() {
           <HeroStagger className="flex w-full min-w-0 flex-col items-start">
             <HeroItem className="w-full min-w-0">
               <p className="font-mono text-xs uppercase tracking-normal text-brand-warm-ink font-bold sm:tracking-[0.2em] sm:text-sm">
-                6<sup className="text-[0.65em]">th</sup> IEEE International
+                6<sup className="text-[0.65em]">th</sup> International
                 Conference on
               </p>
             </HeroItem>
