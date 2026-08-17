@@ -327,3 +327,115 @@ export const areaChairsGroup: CommitteeGroup = {
     },
   ],
 };
+
+export const nationalAdvisoryGroup: CommitteeGroup = {
+  title: "National Advisory Committee",
+  members: [
+    {
+      name: "Prof. V. M. Gadre",
+      affiliation: "IIT Bombay",
+      href: "https://www.ee.iitb.ac.in/wiki/faculty/vmgadre",
+      image: "/images/committees/v-m-gadre.jpg",
+    },
+    {
+      name: "Prof. B. Yegnanarayana",
+      affiliation: "IIIT Hyderabad",
+      href: "https://www.iiit.ac.in/people/faculty/Yegna/",
+      image: "/images/committees/b-yegnanarayana.jpg",
+    },
+    {
+      name: "Prof. Ujjwal Maulik",
+      affiliation: "Jadavpur University",
+      href: "https://sites.google.com/site/drujjwalmaulik",
+      image: "/images/committees/ujjwal-maulik.jpg",
+    },
+    {
+      name: "Prof. S. Siva Sathya",
+      affiliation: "Pondicherry University",
+      href: "https://www.pondiuni.edu.in/faculy_profiles/dr-s-sivasathya/",
+      image: "/images/committees/s-siva-sathya.jpeg",
+    },
+    {
+      name: "Prof. Phalguni Gupta",
+      affiliation: "IIT Kanpur",
+      href: "https://www.cse.iitk.ac.in/users/pg/",
+      image: "/images/committees/phalguni-gupta.jpg",
+    },
+    {
+      name: "Sundar Balakrishna",
+      affiliation: "Special Secretary, Department of Information Technology",
+    },
+    {
+      name: "Prof. Jayanta Mukhopadhyay",
+      affiliation: "IIT Kharagpur",
+      href: "https://www.iitkgp.ac.in/department/CS/faculty/cs-jay",
+      image: "/images/committees/jayanta-mukhopadhyay.jpg",
+    },
+    {
+      name: "Prof. Sushmita Mitra",
+      affiliation: "ISI Kolkata",
+      href: "https://www.isical.ac.in/~sushmita/",
+      image: "/images/committees/sushmita-mitra.jpg",
+    },
+  ],
+};
+
+export const internationalAdvisoryGroup: CommitteeGroup = {
+  title: "International Advisory Committee",
+  members: [
+    {
+      name: "Prof. Ishwar K. Sethi",
+      affiliation: "Oakland University, USA",
+      href: "https://www.oakland.edu/secs/directory/sethi/",
+      image: "/images/committees/ishwar-k-sethi.jpg",
+    },
+    {
+      name: "Prof. Kiran Raja",
+      affiliation: "NTNU, Norway",
+      href: "https://www.ntnu.edu/employees/kiran.raja",
+      image: "/images/committees/kiran-raja.png",
+    },
+    {
+      name: "Prof. Paula Brito",
+      affiliation: "University of Porto, Portugal",
+      href: "https://www.fep.up.pt/docentes/mpbrito/",
+      image: "/images/committees/paula-brito.png",
+    },
+    {
+      name: "Prof. Raghavendra Ramachandra",
+      affiliation: "NTNU, Norway",
+      href: "https://www.ntnu.edu/employees/raghavendra.ramachandra",
+      image: "/images/committees/raghavendra-ramachandra.png",
+    },
+    {
+      name: "Dr. Nalini K. Ratha",
+      affiliation: "State University of New York at Buffalo, USA",
+      href: "https://www.buffalo.edu/cubs/members.host.html/content/shared/engineering/computer-science-engineering/profiles/faculty/ladder/ratha-nalini.html",
+      image: "/images/committees/nalini-k-ratha.jpg",
+    },
+    {
+      name: "Prof. Xingquan (Hill) Zhu",
+      affiliation: "Florida Atlantic University, USA",
+      href: "https://www.fau.edu/engineering/directory/faculty/zhu/",
+      image: "/images/committees/xingquan-zhu.jpg",
+    },
+    {
+      name: "Prof. B. S. Manjunath",
+      affiliation: "University of California, Santa Barbara, USA",
+      href: "https://vision.ece.ucsb.edu/",
+      image: "/images/committees/b-s-manjunath.jpg",
+    },
+    {
+      name: "Prof. Jonathan Wu",
+      affiliation: "University of Windsor, Canada",
+      href: "https://www.uwindsor.ca/engineering/electrical/317/dr-jonathan-wu",
+      image: "/images/committees/jonathan-wu.jpg",
+    },
+    {
+      name: "Prof. Sudeep Sarkar",
+      affiliation: "University of South Florida, USA",
+      href: "https://www.usf.edu/engineering/cse/people/sarkar-sudeep.aspx",
+      image: "/images/committees/sudeep-sarkar.jpg",
+    },
+  ],
+};
