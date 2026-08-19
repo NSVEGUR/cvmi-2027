@@ -44,12 +44,17 @@ export const navItems: NavItem[] = [
   },
   {
     label: "Call for Papers",
-    href: "/call-for-papers",
+    href: "/paper-submission",
     children: [
       {
-        label: "Topics & Guidelines",
+        label: "Paper Submission",
+        href: "/paper-submission",
+        description: "submission format",
+      },
+      {
+        label: "Conference Tracks",
         href: "/call-for-papers",
-        description: "Scope, tracks, submission format",
+        description: "Scope, tracks",
       },
       {
         label: "Camera-Ready Instructions",

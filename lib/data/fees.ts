@@ -5,57 +5,57 @@ export type FeeRow = {
 };
 
 export const indianFees: FeeRow[] = [
-  { category: "IEEE/IAPR Student Author", early: "₹10,620", late: "₹11,800" },
-  { category: "IEEE/IAPR Student Attendee", early: "₹3,540", late: "₹5,900" },
+  { category: "IEEE Student Author", early: "₹10,620", late: "₹11,800" },
+  { category: "IEEE Student Attendee", early: "₹3,540", late: "₹5,900" },
   {
-    category: "Non-IEEE/IAPR Student Author",
+    category: "Non-IEEE Student Author",
     early: "₹11,800",
     late: "₹12,980",
   },
   {
-    category: "Non-IEEE/IAPR Student Attendee",
+    category: "Non-IEEE Student Attendee",
     early: "₹4,720",
     late: "₹7,080",
   },
-  { category: "IEEE/IAPR Faculty Author", early: "₹12,980", late: "₹14,160" },
-  { category: "IEEE/IAPR Faculty Attendee", early: "₹5,900", late: "₹8,260" },
+  { category: "IEEE Faculty Author", early: "₹12,980", late: "₹14,160" },
+  { category: "IEEE Faculty Attendee", early: "₹5,900", late: "₹8,260" },
   {
-    category: "Non-IEEE/IAPR Faculty Author",
+    category: "Non-IEEE Faculty Author",
     early: "₹14,160",
     late: "₹15,340",
   },
   {
-    category: "Non-IEEE/IAPR Faculty Attendee",
+    category: "Non-IEEE Faculty Attendee",
     early: "₹7,080",
     late: "₹9,440",
   },
-  { category: "IEEE/IAPR Industry Author", early: "₹14,160", late: "₹16,520" },
-  { category: "IEEE/IAPR Industry Attendee", early: "₹8,260", late: "₹10,620" },
+  { category: "IEEE Industry Author", early: "₹14,160", late: "₹16,520" },
+  { category: "IEEE Industry Attendee", early: "₹8,260", late: "₹10,620" },
   {
-    category: "Non-IEEE/IAPR Industry Author",
+    category: "Non-IEEE Industry Author",
     early: "₹15,340",
     late: "₹17,700",
   },
   {
-    category: "Non-IEEE/IAPR Industry Attendee",
+    category: "Non-IEEE Industry Attendee",
     early: "₹9,440",
     late: "₹11,800",
   },
 ];
 
 export const foreignFees: FeeRow[] = [
-  { category: "IEEE/IAPR Student Author", early: "$236", late: "$354" },
-  { category: "IEEE/IAPR Student Attendee", early: "$118", late: "$236" },
-  { category: "Non-IEEE/IAPR Student Author", early: "$295", late: "$413" },
-  { category: "Non-IEEE/IAPR Student Attendee", early: "$177", late: "$295" },
-  { category: "IEEE/IAPR Faculty Author", early: "$354", late: "$472" },
-  { category: "IEEE/IAPR Faculty Attendee", early: "$236", late: "$354" },
-  { category: "Non-IEEE/IAPR Faculty Author", early: "$413", late: "$531" },
-  { category: "Non-IEEE/IAPR Faculty Attendee", early: "$295", late: "$413" },
-  { category: "IEEE/IAPR Industry Author", early: "$472", late: "$590" },
-  { category: "IEEE/IAPR Industry Attendee", early: "$354", late: "$472" },
-  { category: "Non-IEEE/IAPR Industry Author", early: "$531", late: "$649" },
-  { category: "Non-IEEE/IAPR Industry Attendee", early: "$413", late: "$531" },
+  { category: "IEEE Student Author", early: "$236", late: "$354" },
+  { category: "IEEE Student Attendee", early: "$118", late: "$236" },
+  { category: "Non-IEEE Student Author", early: "$295", late: "$413" },
+  { category: "Non-IEEE Student Attendee", early: "$177", late: "$295" },
+  { category: "IEEE Faculty Author", early: "$354", late: "$472" },
+  { category: "IEEE Faculty Attendee", early: "$236", late: "$354" },
+  { category: "Non-IEEE Faculty Author", early: "$413", late: "$531" },
+  { category: "Non-IEEE Faculty Attendee", early: "$295", late: "$413" },
+  { category: "IEEE Industry Author", early: "$472", late: "$590" },
+  { category: "IEEE Industry Attendee", early: "$354", late: "$472" },
+  { category: "Non-IEEE Industry Author", early: "$531", late: "$649" },
+  { category: "Non-IEEE Industry Attendee", early: "$413", late: "$531" },
 ];
 
 export const registrationGuidelines: { title: string; body: string }[] = [
@@ -73,7 +73,7 @@ export const registrationGuidelines: { title: string; body: string }[] = [
   },
   {
     title: "Verification requirements",
-    body: "Students and IEEE/IAPR members must carry valid proof at registration - a current Institute/College/University ID for students, and a current-year membership card for IEEE/IAPR members.",
+    body: "Students and IEEE members must carry valid proof at registration - a current Institute/College/University ID for students, and a current-year membership card for IEEE members.",
   },
   {
     title: "Non-author registration",
