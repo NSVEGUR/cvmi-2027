@@ -23,7 +23,7 @@ export default function CommitteesPage() {
       <section className="mx-auto max-w-4xl px-6 py-16">
         <CommitteeSection groups={committeeGroups} />
 
-        <Reveal className="mt-8 flex items-center justify-between gap-4 rounded-xl border border-dashed border-border px-5 py-4">
+        <Reveal className="mt-8 flex flex-col items-start gap-3 rounded-xl border border-dashed border-border px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
           <p className="text-base text-muted-foreground">
             Looking for the technical area chairs?
           </p>
@@ -31,6 +31,7 @@ export default function CommitteesPage() {
             render={<Link href="/committees/area-chairs" />}
             nativeButton={false}
             variant="outline"
+            className="w-full sm:w-auto"
           >
             Area Chairs
             <ArrowUpRight />

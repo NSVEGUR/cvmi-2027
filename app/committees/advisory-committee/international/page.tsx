@@ -23,7 +23,7 @@ export default function InternationalAdvisoryCommitteePage() {
       <section className="mx-auto max-w-4xl px-6 py-16">
         <CommitteeSection groups={[internationalAdvisoryGroup]} />
 
-        <Reveal className="mt-8 flex items-center justify-between gap-4 rounded-xl border border-dashed border-border px-5 py-4">
+        <Reveal className="mt-8 flex flex-col items-start gap-3 rounded-xl border border-dashed border-border px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
           <p className="text-base text-muted-foreground">
             Looking for the national advisory committee?
           </p>
@@ -31,6 +31,7 @@ export default function InternationalAdvisoryCommitteePage() {
             render={<Link href="/committees/advisory-committee/national" />}
             nativeButton={false}
             variant="outline"
+            className="w-full sm:w-auto"
           >
             National Advisory Committee
             <ArrowUpRight />

@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, UploadCloud } from "lucide-react";
 
 import { PageHeader } from "@/components/page-header";
 import { SectionEyebrow } from "@/components/section-eyebrow";
 import { FocusFrame } from "@/components/focus-frame";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
+import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -66,25 +67,71 @@ export default function PaperSubmissionPage() {
               Submission guidelines
             </h2>
           </Reveal>
-          <RevealGroup className="mt-8 grid gap-6 sm:grid-cols-2" stagger={0.06}>
+          <RevealGroup
+            className="mt-8 grid gap-6 sm:grid-cols-2"
+            stagger={0.06}
+          >
             {guidelines.map((item) => (
               <RevealItem key={item.title}>
-                <h3 className="font-heading text-sm font-medium">{item.title}</h3>
-                <p className="mt-1.5 text-base text-muted-foreground">{item.body}</p>
+                <h3 className="font-heading text-sm font-medium">
+                  {item.title}
+                </h3>
+                <p className="mt-1.5 text-base text-muted-foreground">
+                  {item.body}
+                </p>
               </RevealItem>
             ))}
           </RevealGroup>
 
           <Reveal delay={0.15}>
-            <FocusFrame inset="-8px" tone="muted" className="mt-12 px-6 py-5">
-              <p className="font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground">
-                Submission portal
-              </p>
-              <p className="mt-1.5 text-sm">
-                The paper submission system link will be published here once the
-                portal opens on the Call for Papers date.
-              </p>
-            </FocusFrame>
+            <div className="relative mt-12 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-accent/70 via-accent/20 to-transparent p-8 text-center shadow-md shadow-brand-accent/5 ring-1 ring-brand-accent/10 sm:p-12">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -top-20 -right-16 size-64 rounded-full bg-brand-accent/20 blur-3xl"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -bottom-24 -left-10 size-56 rounded-full bg-brand-accent/10 blur-3xl"
+              />
+
+              <div className="relative">
+                <div className="mx-auto flex size-12 items-center justify-center rounded-2xl bg-brand-accent/10 text-brand-accent-ink ring-1 ring-brand-accent/20">
+                  <UploadCloud className="size-6" strokeWidth={1.75} />
+                </div>
+                <h3 className="mt-5 font-heading text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
+                  Manuscript submission portal
+                </h3>
+                <div className="mx-auto mt-3 h-0.5 w-14 bg-gradient-to-r from-brand-accent-ink to-brand-accent" />
+                <p className="mx-auto mt-4 max-w-xl text-base text-muted-foreground">
+                  The manuscript has to be uploaded online at the CVMI 2027
+                  Microsoft CMT paper submission portal:
+                </p>
+                <Button
+                  render={
+                    <Link href="#" target="_blank" rel="noopener noreferrer" />
+                  }
+                  nativeButton={false}
+                  size="lg"
+                  className="group/submit mt-7 h-auto w-full max-w-full flex-wrap justify-center gap-1.5 px-6 py-2.5 text-center whitespace-normal shadow-md shadow-brand-accent/20 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-accent/30 sm:w-auto"
+                >
+                  Go to Submission Portal (CVMI 2027)
+                  <ArrowUpRight className="size-4 shrink-0 transition-transform group-hover/submit:translate-x-0.5 group-hover/submit:-translate-y-0.5" />
+                </Button>
+
+                <div className="mx-auto mt-10 max-w-2xl rounded-xl border border-border bg-card/60 px-5 py-4 text-left">
+                  <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary">
+                    Acknowledgment
+                  </p>
+                  <p className="mt-2 text-sm text-muted-foreground italic">
+                    The Microsoft CMT service was used for managing the
+                    peer-reviewing process for this conference. This service was
+                    provided for free by Microsoft, who bore all associated
+                    expenses, including costs for Azure cloud services as well
+                    as for software development and support.
+                  </p>
+                </div>
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -100,7 +147,9 @@ export default function PaperSubmissionPage() {
           {policies.map((item) => (
             <RevealItem key={item.title}>
               <h3 className="font-heading text-sm font-medium">{item.title}</h3>
-              <p className="mt-1.5 text-base text-muted-foreground">{item.body}</p>
+              <p className="mt-1.5 text-base text-muted-foreground">
+                {item.body}
+              </p>
             </RevealItem>
           ))}
         </RevealGroup>

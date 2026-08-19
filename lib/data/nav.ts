@@ -49,7 +49,7 @@ export const navItems: NavItem[] = [
       {
         label: "Paper Submission",
         href: "/paper-submission",
-        description: "submission format",
+        description: "Submission Format",
       },
       {
         label: "Conference Tracks",
