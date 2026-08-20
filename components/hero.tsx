@@ -67,7 +67,9 @@ export function Hero() {
               <CampusTourDialog />
               <div className="flex flex-wrap gap-3">
                 <Button
-                  render={<Link href="/call-for-papers" />}
+                  render={
+                    <Link href="https://cmt3.research.microsoft.com/CVMI2027" />
+                  }
                   nativeButton={false}
                   size="lg"
                   className="px-6 shadow-md shadow-brand-accent/20 transition-shadow hover:shadow-lg hover:shadow-brand-accent/30"
