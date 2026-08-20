@@ -77,13 +77,19 @@ export function Hero() {
                   Submit a paper
                 </Button>
                 <Button
-                  render={<Link href="/registration" />}
+                  render={
+                    <Link
+                      href="/documents/CVMI-2027-Call-for-Papers.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    />
+                  }
                   nativeButton={false}
                   variant="outline"
                   size="lg"
                   className="px-6"
                 >
-                  Register
+                  Call for Papers
                 </Button>
               </div>
             </HeroItem>
