@@ -108,7 +108,7 @@ export default function PaperSubmissionPage() {
                 </p>
                 <Button
                   render={
-                    <Link href="#" target="_blank" rel="noopener noreferrer" />
+                    <Link href="https://cmt3.research.microsoft.com/CVMI2027" target="_blank" rel="noopener noreferrer" />
                   }
                   nativeButton={false}
                   size="lg"
