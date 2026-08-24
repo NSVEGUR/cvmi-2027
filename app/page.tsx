@@ -31,7 +31,8 @@ const facts = [
   {
     icon: BookMarked,
     title: "IEEE Xplore",
-    description: "Accepted papers submitted for inclusion in IEEE Xplore.",
+    description:
+      "Accepted papers submitted for inclusion in IEEE Xplore, subject to meeting IEEE's scope and quality requirements.",
   },
   {
     icon: GraduationCap,
