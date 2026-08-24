@@ -66,6 +66,22 @@ export const navItems: NavItem[] = [
   { label: "Important Dates", href: "/important-dates" },
   { label: "Registration", href: "/registration" },
   {
+    label: "Sponsorship",
+    href: "/sponsorship/call-for-sponsors",
+    children: [
+      {
+        label: "Become a Sponsor",
+        href: "/sponsorship/call-for-sponsors",
+        description: "Packages & benefits",
+      },
+      {
+        label: "Sponsors",
+        href: "/sponsorship/sponsors",
+        description: "Our supporting sponsors",
+      },
+    ],
+  },
+  {
     label: "Program",
     href: "/program",
     children: [
