@@ -30,7 +30,7 @@ export function Hero() {
           <HeroStagger className="flex w-full min-w-0 flex-col items-start">
             <HeroItem className="w-full min-w-0">
               <p className="font-mono text-xs uppercase tracking-normal text-brand-warm-ink font-bold sm:tracking-[0.2em] sm:text-sm">
-                6<sup className="text-[0.65em]">th</sup> International
+                6<sup className="text-[0.65em]">th</sup> IEEE International
                 Conference on
               </p>
             </HeroItem>
@@ -90,6 +90,21 @@ export function Hero() {
                   className="px-6"
                 >
                   Call for Papers
+                </Button>
+                <Button
+                  render={
+                    <Link
+                      href="https://forms.gle/vvVvC4U2SoJwqyrE6"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    />
+                  }
+                  nativeButton={false}
+                  variant="outline"
+                  size="lg"
+                  className="px-6"
+                >
+                  Invitation for Reviewers
                 </Button>
               </div>
             </HeroItem>

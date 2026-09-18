@@ -224,6 +224,12 @@ export const areaChairsGroup: CommitteeGroup = {
   title: "Area Chairs",
   members: [
     {
+      name: "Dr. Navjot Singh",
+      affiliation: "IIIT Allahabad",
+      href: "https://it.iiita.ac.in/?pg=facultypage&uid=navjot",
+      image: "/images/committees/navjot-singh.jpg",
+    },
+    {
       name: "Dr. Varun Kumar Kakar",
       affiliation: "B. T. Kumaon Institute of Technology, Dwarahat",
       href: "https://kecua.ac.in/index.php/member/mr-varun-kakar/",
