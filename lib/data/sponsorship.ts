@@ -1,3 +1,25 @@
+export type Sponsor = {
+  name: string;
+  logo: string;
+  width: number;
+  height: number;
+};
+
+export const sponsors: Sponsor[] = [
+  {
+    name: "IEEE Signal Processing Society - UP Chapter",
+    logo: "/images/sponsors/ieee-sps-up-chapter.jpg",
+    width: 220,
+    height: 147,
+  },
+  {
+    name: "IEEE Madras Section",
+    logo: "/images/sponsors/ieee-mas.webp",
+    width: 220,
+    height: 147,
+  },
+];
+
 export type SponsorshipTier = {
   tier: string;
   fund: string;

@@ -50,6 +50,12 @@ export const committeeGroups: CommitteeGroup[] = [
         href: "https://cvbl.iiita.ac.in/sks/",
         image: "/images/committees/satish-kumar-singh.png",
       },
+      {
+        name: "Prof. Venu Govindaraju",
+        affiliation: "University at Buffalo, USA",
+        href: "https://www.buffalo.edu/cubs/members.host.html/content/shared/engineering/computer-science-engineering/profiles/faculty/ladder/govindaraju-venu.html",
+        image: "/images/committees/venu-govindaraju.jpg",
+      },
     ],
   },
   {
@@ -330,6 +336,24 @@ export const areaChairsGroup: CommitteeGroup = {
       name: "Dr. Sumanta Chandra Mishra Sharma",
       affiliation: "IIIT Sri City",
       image: "/images/committees/sumanta-chandra-mishra-sharma.png",
+    },
+    {
+      name: "Dr. Sudhakar Kumawat",
+      affiliation: "IIT (ISM) Dhanbad",
+      href: "https://www.iitism.ac.in/faculty-details?faculty=sudhakar",
+      image: "/images/committees/sudhakar-kumawat.jpg",
+    },
+    {
+      name: "Dr. N Kishore Babu",
+      affiliation: "IIIT Ranchi",
+      href: "https://kishorebabun.github.io/",
+      image: "/images/committees/n-kishore-babu.png",
+    },
+    {
+      name: "Dr. Poornima Singh Thakur",
+      affiliation: "ABV-IIITM Gwalior",
+      href: "https://www.iiitm.ac.in/staff/faculty/dr-poornima-singh-thakur",
+      image: "/images/committees/poornima-singh-thakur.jpg",
     },
   ],
 };

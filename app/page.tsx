@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowUpRight,
   BookMarked,
@@ -20,6 +21,7 @@ import {
   reviewProcessNote,
 } from "@/lib/data/dates";
 import { topicGroups } from "@/lib/data/topics";
+import { sponsors } from "@/lib/data/sponsorship";
 import { cn } from "@/lib/utils";
 
 const facts = [
@@ -226,6 +228,40 @@ export default function Home() {
             </p>
           </Reveal>
         </div>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-6 py-16">
+        <Reveal className="text-center">
+          <SectionEyebrow className="justify-center">
+            Supported by
+          </SectionEyebrow>
+          <h2 className="mt-3 font-heading text-2xl font-medium tracking-tight sm:text-3xl">
+            Our sponsors
+          </h2>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-8 sm:gap-12">
+            {sponsors.map((sponsor) => (
+              <div
+                key={sponsor.name}
+                className="flex flex-col items-center gap-3"
+              >
+                <div className="flex h-28 w-56 items-center justify-center rounded-xl border border-border bg-card px-6 py-4 shadow-sm ring-1 ring-black/[0.02]">
+                  <Image
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    width={sponsor.width}
+                    height={sponsor.height}
+                    className="h-auto max-h-20 w-auto max-w-full object-contain"
+                  />
+                </div>
+                <p className="font-mono text-xs uppercase tracking-[0.1em] text-muted-foreground">
+                  {sponsor.name}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </section>
     </>
   );
